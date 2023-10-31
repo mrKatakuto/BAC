@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
-    // Events for the actions
+    public Vector2 MovementValue {  get; private set; } 
+
+    // Events for the actions everyone who listens will react
     public event Action JumpEvent;
     public event Action DodgeEvent;
 
@@ -43,5 +45,10 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             DodgeEvent?.Invoke();
         }
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        MovementValue = context.ReadValue<Vector2>();
     }
 }
