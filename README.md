@@ -12,3 +12,9 @@ RISING: Per aspera ad astra
 # Software
 
 # Authors
+
+This project was created by Alen Galusic
+
+# Other Creators
+
+# Release
