@@ -7,8 +7,8 @@ Video game bachelor's project with the main focus on Storytelling
 # Name of the Product
 RISING: Per aspera ad astra
 
-#Overview
+# Overview
 
-#Software
+# Software
 
-#Authors
+# Authors
