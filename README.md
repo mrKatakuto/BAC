@@ -2,7 +2,8 @@
 Video game bachelor's project with the main focus on Storytelling
 
 
-![atomic_hoppo_Risinig_Ad_apsera_ad_astra_chell_shaded_man_with_r_f88c9fed-9323-439d-ae28-f0b8ea28b9f8](https://media.github.fh-kaernten.at/user/425/files/5b5fcbe0-8dbc-43bc-bb8a-103a88adc691)
+![atomic_hoppo_Risinig_Ad_apsera_ad_astra_chell_shaded_man_with_r_f88c9fed-9323-439d-ae28-f0b8ea28b9f8](https://media.github.fh-kaernten.at/user/425/files/9201dddd-72d7-4c06-994e-90877f0e2cdd)
+
 Image created with Midjourney AI basic plan prompt:  Risinig Ad apsera ad astra, chell shaded, man with roborter walking
 
 # Name of the Product
