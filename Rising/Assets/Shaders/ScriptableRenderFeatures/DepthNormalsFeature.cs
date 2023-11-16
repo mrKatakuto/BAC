@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Profiling;
+using UnityEngine.XR;
 
 public class DepthNormalsFeature : ScriptableRendererFeature
 {
@@ -65,10 +66,15 @@ public class DepthNormalsFeature : ScriptableRendererFeature
                 var drawSettings = CreateDrawingSettings(m_ShaderTagId, ref renderingData, sortFlags);
                 drawSettings.perObjectData = PerObjectData.None;
 
+// zeile 72 code geändert von cameraData.isStereoEnabled zu xr.enabled
 
                 ref CameraData cameraData = ref renderingData.cameraData;
                 Camera camera = cameraData.camera;
-                if (cameraData.isStereoEnabled)
+
+                /*if (cameraData.isStereoEnabled)
+                    context.StartMultiEye(camera); */
+
+                if (XRSettings.isDeviceActive)
                     context.StartMultiEye(camera);
 
 
