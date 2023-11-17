@@ -9,7 +9,8 @@ Image created with Midjourney AI basic plan prompt:  Risinig Ad apsera ad astra,
 # Name of the Product
 RISING: Per aspera ad astra
 
-# Overview
+# Story Overview
+After a catastrophe in the year 9819, which almost wipes humanity off the planet Earth, survivors discover an AI called Ares, which should ensure the survival of civilization. By collecting solid energy, which is an essential and rare building material, you are supposed to activate an as yet unknown machine to save the world. However, other survivors are on the hunt for you and certain obstacles make it difficult to complete this adventure.
 
 # Software
 Game Engine: Unity LTS Version 2021.3.31f1, IDE: Visual Studio Code, 3D-Modelling: Blender 3.6, Assets: Unity Asset Store
