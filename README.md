@@ -12,11 +12,12 @@ RISING: Per aspera ad astra
 # Overview
 
 # Software
+Game Engine: Unity LTS Version 2021.3.31f1, IDE: Visual Studio Code, 3D-Modelling: Blender 3.6, Assets: Unity Asset Store
 
 # Authors
-
 This project was created by Alen Galusic
 
 # Other Creators
+Tonn-Shader from https://github.com/UnityTechnologies/open-project-1/tree/devlogs/1-toon-shading
 
 # Release
