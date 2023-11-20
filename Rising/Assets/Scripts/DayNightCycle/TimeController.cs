@@ -100,20 +100,22 @@ public class TimeController : MonoBehaviour
         moonLight.intensity = Mathf.Lerp(maxMoonLightIntensity, 0, lightChangeCurve.Evaluate(dotProduct));
         RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
 
-        if (dotProduct > 0) // Tag
+    /* Skyox änderung 
+    if (dotProduct > 0) // Tag
+    {
+        if (RenderSettings.skybox != daySkybox)
         {
-            if (RenderSettings.skybox != daySkybox)
-            {
-                RenderSettings.skybox = daySkybox;
-            }
+            RenderSettings.skybox = daySkybox;
         }
-        else // Nacht
+    }
+    else // Nacht
+    {
+        if (RenderSettings.skybox != nightSkybox)
         {
-            if (RenderSettings.skybox != nightSkybox)
-            {
-                RenderSettings.skybox = nightSkybox;
-            }
+            RenderSettings.skybox = nightSkybox;
         }
+    }
+    */
     }
 
     private TimeSpan CalculateTimeDifference(TimeSpan fromTime, TimeSpan toTime)
