@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
@@ -16,12 +17,12 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
-
+        stateMachine.InputReader.TargetEvent += OnTarget;
     }
 
     public override void Tick(float deltaTime)
     {
-        Vector3 movement = CalculateMovement();
+        Vector3 movement = CalculateMovement();                 
 
         stateMachine.transform.Translate(movement * deltaTime);
 
@@ -39,7 +40,17 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.InputReader.TargetEvent -= OnTarget;
+    }
 
+    private void OnTarget() 
+    {
+        if(!stateMachine.Targeter.SelectTarget()) 
+        {
+            return;
+        }
+
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 
     private Vector3 CalculateMovement()
