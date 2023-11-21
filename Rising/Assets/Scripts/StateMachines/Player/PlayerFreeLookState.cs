@@ -29,7 +29,14 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        Vector3 movement = CalculateMovement();                 
+        // if statement auskommentieren falls attack nur möglich sein soll wenn man eine target fixiert.
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
+            return;
+        }
+
+        Vector3 movement = CalculateMovement();
 
         Move(movement * stateMachine.FreeLookMovementSpeed, deltaTime);
 
@@ -50,9 +57,9 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.TargetEvent -= OnTarget;
     }
 
-    private void OnTarget() 
+    private void OnTarget()
     {
-        if(!stateMachine.Targeter.SelectTarget()) 
+        if (!stateMachine.Targeter.SelectTarget())
         {
             return;
         }
@@ -71,10 +78,10 @@ public class PlayerFreeLookState : PlayerBaseState
         forward.Normalize();
         right.Normalize();
 
-        return forward * stateMachine.InputReader.MovementValue.y + right * stateMachine.InputReader.MovementValue.x;   
+        return forward * stateMachine.InputReader.MovementValue.y + right * stateMachine.InputReader.MovementValue.x;
     }
 
-        private void FaceMovementDirection(Vector3 movement, float deltaTime)
+    private void FaceMovementDirection(Vector3 movement, float deltaTime)
     {
         stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), deltaTime * stateMachine.RotationDamping);
     }

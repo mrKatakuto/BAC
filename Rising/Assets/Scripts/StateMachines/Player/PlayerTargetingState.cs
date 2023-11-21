@@ -26,9 +26,12 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        // Debug.Log(stateMachine.Targeter.CurrentTarget.name);
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
+            return;
+        }
 
-        // when target is out of range 
         if(stateMachine.Targeter.CurrentTarget == null) 
         {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1346111919}
-  m_IndirectSpecularColor: {r: 0.014647938, g: 0.028024068, b: 0.066510946, a: 1}
+  m_IndirectSpecularColor: {r: 0.014658045, g: 0.028044991, b: 0.066443905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -392,6 +392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MinimumFOV
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422282221205255534, guid: 6ab08a2823fd900488e18fb9c72af940,
+        type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3627437601724196659, guid: 6ab08a2823fd900488e18fb9c72af940,
         type: 3}

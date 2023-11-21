@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
+    public bool IsAttacking {get; private set; }
     public Vector2 MovementValue {  get; private set; } 
 
     // Events for the actions everyone who listens will react
@@ -17,6 +19,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action CancelEvent;
 
     private Controls controls;
+
+    
 
     void Start()
     {
@@ -74,6 +78,18 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         if (!context.performed) { return; }
         {
             CancelEvent?.Invoke();
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            IsAttacking = true;
+        }
+        else if (context.canceled)
+        {
+            IsAttacking = false;
         }
     }
 }

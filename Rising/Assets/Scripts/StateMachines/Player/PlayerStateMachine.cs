@@ -23,6 +23,8 @@ public class PlayerStateMachine : StateMachine
 
     public Transform MainCameraTransform { get; private set; }
 
+    [field: SerializeField] public Attack[] Attacks { get; private set; }
+
     void Start()
     {
         MainCameraTransform = Camera.main.transform;
