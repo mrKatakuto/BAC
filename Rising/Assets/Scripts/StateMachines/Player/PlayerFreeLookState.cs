@@ -13,6 +13,8 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private const float AnimatorDampTime = 0.1f;
 
+    private const float CrossFadDuration = 0.1f;
+
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
 
@@ -23,7 +25,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.TargetEvent += OnTarget;
 
         //targeting release animation
-        stateMachine.Animator.Play(FreeLookBlendTreeHash);
+        stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadDuration);
 
     }
 

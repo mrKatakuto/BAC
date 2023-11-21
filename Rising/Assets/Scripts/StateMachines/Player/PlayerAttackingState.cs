@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerAttackingState : PlayerBaseState
 {
     private float previousFrameTime;
+
+    private bool alreadyApplyForce;
     private  Attack attack;
 
     public PlayerAttackingState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine)
@@ -15,6 +17,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.Weapon.SetAttack(attack.Damage);
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }
 
@@ -26,8 +29,14 @@ public class PlayerAttackingState : PlayerBaseState
 
         float normalizedTime = GetNormalizedTime();
 
-        if (normalizedTime > previousFrameTime && normalizedTime <1f)
+        // normalizedTime >= previousFrameTime && 
+        if (normalizedTime < 1f)
         {
+            if (normalizedTime >= attack.ForceTime)
+            {
+                TryApplyForce();
+            }
+
             if (stateMachine.InputReader.IsAttacking)
             {
                 TryComboAttack(normalizedTime);
@@ -35,7 +44,14 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            // go back to locomotion
+            if (stateMachine.Targeter.CurrentTarget != null)
+            {
+                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            }
+            else
+            {
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            }
         }
 
         previousFrameTime = normalizedTime;
@@ -58,6 +74,17 @@ public class PlayerAttackingState : PlayerBaseState
          }
 
          stateMachine.SwitchState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
+    }
+
+    private void TryApplyForce()
+    {
+        if (alreadyApplyForce)
+        {
+            return;
+        }
+        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
+
+        alreadyApplyForce = true;
     }
 
     private float GetNormalizedTime() 
