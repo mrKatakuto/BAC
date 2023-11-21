@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerFreeLookState : PlayerBaseState
 {
     // mit der animator methode hash generieren lassen und diesen dann verwenden, ist besser für die laufzeit und beugt typos vor
+
+    private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
+
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
 
     private const float AnimatorDampTime = 0.1f;
@@ -18,6 +21,10 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputReader.TargetEvent += OnTarget;
+
+        //targeting release animation
+        stateMachine.Animator.Play(FreeLookBlendTreeHash);
+
     }
 
     public override void Tick(float deltaTime)
@@ -36,6 +43,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
         stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
         FaceMovementDirection(movement, deltaTime);
+
     }
 
     public override void Exit()

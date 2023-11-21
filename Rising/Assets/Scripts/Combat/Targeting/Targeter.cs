@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Targeter : MonoBehaviour
 {
-    // store a list of targets in the players range
+    [SerializeField] private CinemachineTargetGroup cineTargetCroup;
 
+    // store a list of targets in the players range
     private List<Target> targets = new List<Target>();
 
     public Target CurrentTarget { get; private set; }
@@ -20,6 +22,7 @@ public class Targeter : MonoBehaviour
         }
 
         targets.Add(target);
+        target.OnDestroyed += RemoveTarget;
 
         // second possibility
         //if(!other.TryGetComponent<Target>(out Target target)) {return; }
@@ -37,8 +40,7 @@ public class Targeter : MonoBehaviour
             return;
         }
 
-        targets.Remove(target);
-
+        RemoveTarget(target);
     }
 
     public bool SelectTarget() 
@@ -51,6 +53,9 @@ public class Targeter : MonoBehaviour
 
         CurrentTarget = targets[0];
 
+        // add targets into cinemachinetargetgroup
+        cineTargetCroup.AddMember(CurrentTarget.transform, 1f, 2f);
+
         // if we have a target
             return true;
 
@@ -58,6 +63,24 @@ public class Targeter : MonoBehaviour
 
     public void Cancel() 
     {
+        if(CurrentTarget == null) 
+        {
+            return;
+        }
+
+        cineTargetCroup.RemoveMember(CurrentTarget.transform);
         CurrentTarget = null;
+    }
+
+    private void RemoveTarget(Target target) 
+    {
+        if(CurrentTarget == target) 
+        {
+            cineTargetCroup.RemoveMember(CurrentTarget.transform);
+            CurrentTarget = null;
+        }
+
+        target.OnDestroyed -= RemoveTarget;
+        targets.Remove(target);
     }
 }
