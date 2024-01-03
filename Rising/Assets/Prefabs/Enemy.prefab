@@ -1,5 +1,82 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2916655335279180116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60574378523811600}
+  - component: {fileID: 8228202264925089750}
+  - component: {fileID: 5594168879589929487}
+  - component: {fileID: 23526218386114875}
+  m_Layer: 0
+  m_Name: WeaponLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &60574378523811600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916655335279180116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8594701194121332521}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8228202264925089750
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916655335279180116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.2
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.43}
+--- !u!114 &5594168879589929487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916655335279180116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edfd5309a6bc7445bb788e53948eff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 6936346029437713072}
+--- !u!54 &23526218386114875
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916655335279180116}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2982094144478137026
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +93,7 @@ GameObject:
   - component: {fileID: 6212941263770276183}
   - component: {fileID: 6936346029437713072}
   - component: {fileID: 809007912182285068}
+  - component: {fileID: 5741639795406337937}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -97,9 +175,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 7119838841084978714}
-  <PlayerChasingRange>k__BackingField: 10
   <Controller>k__BackingField: {fileID: 6936346029437713072}
   <ForceReceiver>k__BackingField: {fileID: 809007912182285068}
+  <Agent>k__BackingField: {fileID: 7882497646070203115}
+  <Weapon>k__BackingField: {fileID: 5594168879589929487}
+  <PlayerChasingRange>k__BackingField: 10
+  <MovementSpeed>k__BackingField: 3
+  <AttackRange>k__BackingField: 1.5
+  <AttackDamage>k__BackingField: 20
 --- !u!114 &8619207215516034121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,13 +217,13 @@ CharacterController:
   m_GameObject: {fileID: 2982094144478137026}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.03
+  m_SkinWidth: 0.003
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: -0.12, z: 0}
 --- !u!114 &809007912182285068
@@ -157,6 +240,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 6936346029437713072}
   drag: 0.3
+--- !u!114 &5741639795406337937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2982094144478137026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da75eec6068a66043834a1ac30c500c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponLogic: {fileID: 2916655335279180116}
 --- !u!1 &8594701194121545069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,7 +2304,8 @@ Transform:
   m_LocalPosition: {x: -0.006969581, y: 0.1429561, z: 0.03510243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 60574378523811600}
   m_Father: {fileID: 8594701194121317527}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

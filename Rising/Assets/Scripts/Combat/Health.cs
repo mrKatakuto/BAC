@@ -22,6 +22,6 @@ public class Health : MonoBehaviour
 
         health = Mathf.Max(health - damage, 0);
 
-        //Debug.Log(health);
+        Debug.Log(health);
     }
 }
