@@ -183,6 +183,7 @@ MonoBehaviour:
   <MovementSpeed>k__BackingField: 3
   <AttackRange>k__BackingField: 1.5
   <AttackDamage>k__BackingField: 20
+  <AttackKnockback>k__BackingField: 20
 --- !u!114 &8619207215516034121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,15 +218,15 @@ CharacterController:
   m_GameObject: {fileID: 2982094144478137026}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 0
   m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.003
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: -0.12, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &809007912182285068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6936346029437713072}
+  agent: {fileID: 7882497646070203115}
   drag: 0.3
 --- !u!114 &5741639795406337937
 MonoBehaviour:
