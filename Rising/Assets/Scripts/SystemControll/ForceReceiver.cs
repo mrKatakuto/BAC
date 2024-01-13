@@ -35,7 +35,7 @@ public class ForceReceiver : MonoBehaviour
 
         if (agent != null)
         {
-            if (impact == Vector3.zero)
+            if (impact.sqrMagnitude	 < 0.2f * 0.2f)
             {
                 agent.enabled = true;
             }

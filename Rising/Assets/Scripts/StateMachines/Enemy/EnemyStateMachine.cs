@@ -15,6 +15,12 @@ public class EnemyStateMachine : StateMachine
 
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
 
+    [field: SerializeField] public Health Health { get; private set; }
+
+    [field: SerializeField] public Target Target { get; private set; }
+
+    [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
+
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
 
     [field: SerializeField] public float MovementSpeed { get; private set; }
@@ -36,6 +42,28 @@ public class EnemyStateMachine : StateMachine
 
         SwitchState(new EnemyIdleState(this));
 
+    }
+
+    private void OnEnable() 
+    {
+        Health.OnTakeDamage += HandleTakeDamage;
+        Health.OnDie += HandleDie;
+    }
+
+    private void OnTakeDamage() 
+    {
+        Health.OnTakeDamage -= HandleTakeDamage;
+        Health.OnDie -= HandleDie;
+    }
+
+    private void HandleTakeDamage() 
+    {
+        SwitchState(new EnemyImpactState(this));
+    }
+
+        private void HandleDie() 
+    {
+        SwitchState(new EnemyDeadState(this));
     }
 
     private void OnDrawGizmos() 
