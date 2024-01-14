@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Main_Menu.unity
+    guid: 4141e833296bc3f488a0a34f68d3f7c9
+  - enabled: 1
+    path: Assets/Scenes/Level_1_The_Discovery.unity
+    guid: 1070f3d0ae8d3634aa6aeeaf5feef74d
   m_configObjects: {}
