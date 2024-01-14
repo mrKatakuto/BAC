@@ -84,6 +84,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         }
     }
 
+
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
