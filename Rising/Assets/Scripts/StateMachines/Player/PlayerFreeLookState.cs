@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
+    private bool shouldFade;
+
     // mit der animator methode hash generieren lassen und diesen dann verwenden, ist besser für die laufzeit und beugt typos vor
 
     private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
@@ -15,9 +17,9 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private const float CrossFadDuration = 0.1f;
 
-    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
+    public PlayerFreeLookState(PlayerStateMachine stateMachine, bool shouldFade = true) : base(stateMachine)
     {
-
+        this.shouldFade = shouldFade;
     }
 
     public override void Enter()
@@ -26,9 +28,17 @@ public class PlayerFreeLookState : PlayerBaseState
 
         stateMachine.InputReader.JumpEvent += OnJump;
 
-        //targeting release animation
-        stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadDuration);
+        stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0f);
 
+        if (shouldFade)
+        {
+            //targeting release animation
+            stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadDuration);
+        }
+        else
+        {
+           stateMachine.Animator.Play(FreeLookBlendTreeHash);
+        }
     }
 
     public override void Tick(float deltaTime)

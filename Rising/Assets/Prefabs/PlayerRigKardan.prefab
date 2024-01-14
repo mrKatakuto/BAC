@@ -182,7 +182,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5131931350256158791}
-  m_LocalRotation: {x: 0.1784247, y: -0.00000000846514, z: 0.0000000015350214, w: 0.9839536}
+  m_LocalRotation: {x: 0.1784247, y: 0.000000008465141, z: -0.0000000015350216, w: 0.9839536}
   m_LocalPosition: {x: -8.337296, y: -0.21158293, z: -36.590508}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -393,8 +393,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6904805365784159003}
-  m_LocalRotation: {x: -0.008598103, y: 0.9897824, z: -0.068091944, w: -0.12498175}
-  m_LocalPosition: {x: 0, y: 0, z: 2.6421452}
+  m_LocalRotation: {x: 0.021379627, y: -0.00000090897083, z: 0.000000110361725, w: 0.9997714}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 0.5, z: -6}
+  m_FollowOffset: {x: 0, y: 0.5389672, z: -5.9994297}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -526,7 +526,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -165.64433
+    Value: -165.64441
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -598,8 +598,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6904805366136636934}
-  m_LocalRotation: {x: -0.006323326, y: 0.9908572, z: -0.050077047, w: -0.12511745}
-  m_LocalPosition: {x: 0, y: 0, z: 2.5321445}
+  m_LocalRotation: {x: 0.0031907568, y: -0.0000008866191, z: 0.00000009313226, w: 0.999995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -676,8 +676,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6904805366381464234}
-  m_LocalRotation: {x: -0.0040524704, y: 0.9916026, z: -0.032093205, w: -0.12521158}
-  m_LocalPosition: {x: 0, y: 0, z: 2.4221458}
+  m_LocalRotation: {x: -0.014951134, y: -0.0000009164214, z: 0.00000008009374, w: 0.9998883}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -756,8 +756,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6904805366424503606}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.849655, y: -1.2115829, z: -29.58}
+  m_LocalRotation: {x: -0.006323325, y: 0.9908572, z: -0.050077047, w: -0.12511744}
+  m_LocalPosition: {x: -6.8498077, y: -1.1726158, z: -26.778404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -806,7 +806,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 0.5
+    Value: 0.50915474
     m_SpeedMode: 0
     m_MaxSpeed: 2
     m_AccelTime: 0.2
@@ -830,7 +830,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -165.64433
+    Value: -165.64441
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -976,7 +976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 0.5, z: -6}
+  m_FollowOffset: {x: 0, y: 0.5389672, z: -5.9994297}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -996,7 +996,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -165.64433
+    Value: -165.64441
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 0.5, z: -6}
+  m_FollowOffset: {x: 0, y: 0.5389672, z: -5.9994297}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1123,7 +1123,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -165.64433
+    Value: -165.64441
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -1188,16 +1188,6 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 2675799712975920621}
-    - target: {fileID: 943059410465060059, guid: b2543df98a07a934abde4e90333bb985,
-        type: 3}
-      propertyPath: <Targeter>k__BackingField
-      value: 
-      objectReference: {fileID: 7870710189435367585}
-    - target: {fileID: 943059410465060059, guid: b2543df98a07a934abde4e90333bb985,
-        type: 3}
-      propertyPath: <ForceReceiver>k__BackingField
-      value: 
-      objectReference: {fileID: 2426123923676735715}
     - target: {fileID: 943059410465060059, guid: b2543df98a07a934abde4e90333bb985,
         type: 3}
       propertyPath: <Attacks>k__BackingField.Array.data[1].<Damage>k__BackingField
@@ -1291,18 +1281,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3005745101124886311}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2426123923676735715 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 584869697883699140, guid: b2543df98a07a934abde4e90333bb985,
-    type: 3}
-  m_PrefabInstance: {fileID: 3005745101124886311}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37ce6d356df67e440a39f2b5dfc20952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &2675799712975920621 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 906583174240191178, guid: b2543df98a07a934abde4e90333bb985,
@@ -1327,15 +1305,3 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 3005745101124886311}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7870710189435367585 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4939582418588594054, guid: b2543df98a07a934abde4e90333bb985,
-    type: 3}
-  m_PrefabInstance: {fileID: 3005745101124886311}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadbc769229f354468681645715dbc43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
