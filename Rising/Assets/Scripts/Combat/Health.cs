@@ -9,13 +9,23 @@ public class Health : MonoBehaviour
 
     private int health;
 
+    private bool isInvunerable;
+
     public event Action OnTakeDamage;
 
     public event Action OnDie;
 
+    // check anywhere if dead
+    public bool isDead => health == 0;
+
     private void Start()
     {
         health = maxHealth;
+    }
+
+    public void SetInvulnerable(bool isInvunerable) 
+    {
+        this.isInvunerable = isInvunerable;
     }
 
     public void DealDamage(int damage) 
@@ -23,6 +33,11 @@ public class Health : MonoBehaviour
         if(health == 0) 
         {
             return;  
+        }
+
+        if (isInvunerable)
+        {
+            return;
         }
 
         health = Mathf.Max(health - damage, 0);
@@ -34,6 +49,6 @@ public class Health : MonoBehaviour
             OnDie?.Invoke();
         }
 
-        //Debug.Log(health);
+        Debug.Log(health);
     }
 }

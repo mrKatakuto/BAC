@@ -4999,7 +4999,7 @@ MonoBehaviour:
   <MovementSpeed>k__BackingField: 3
   <AttackRange>k__BackingField: 1.5
   <AttackDamage>k__BackingField: 15
-  <AttackKnockback>k__BackingField: 10
+  <AttackKnockback>k__BackingField: 5
 --- !u!114 &8619207215516034121
 MonoBehaviour:
   m_ObjectHideFlags: 0
