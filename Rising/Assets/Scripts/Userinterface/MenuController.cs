@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 0.5f;
 
+
     [HeaderAttribute("Gameplay Settings")]
     [SerializeField] private TMP_Text controllerSenTextValue = null;
     [SerializeField] private Slider controllerSenSlider = null;
@@ -23,19 +24,60 @@ public class MenuController : MonoBehaviour
     [Header("Toggle Settings")]
     [SerializeField] private Toggle invertYToggle = null;
 
+
+    [Header("Graphics Settings")]
+    [SerializeField] private Slider brightnessSlider = null;
+    [SerializeField] private TMP_Text brightnessTextValue = null;
+    [SerializeField] private float defaultBrightness = 1;
+
+    private int qualityLevel;
+    private bool _isFullscreen;
+    private float brightnesslevel;
+
     [Header("Confirmation")]
     [SerializeField] private GameObject confirmationPrompt = null;
-
-
-
-
 
 
     [Header("Levels To Load")]
     public string newGameLevel;
     private string levelToLoad;
-
     [SerializeField] private GameObject noSavedGameDialog = null;
+
+
+    [Header("Resolution Dropdown")]
+    public TMP_Dropdown  resolutionDropdown;
+    private Resolution[] resolutions;
+
+    private void Start() 
+    {
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResolutionIndex = 0;
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + "x" + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            {
+                currentResolutionIndex = i;
+            }
+        }
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+    }
+
+    public void SetResolution(int resulotionIndex) 
+    {
+        Resolution resolution = resolutions[resulotionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
 
     public void NewGameDialogYes() 
     {
@@ -93,6 +135,36 @@ public class MenuController : MonoBehaviour
 
         PlayerPrefs.SetFloat("masterSen", mainControllerSen);
         StartCoroutine(ConfirmationBox());
+    }
+
+    public void SetBrightness(float brightness) 
+    {
+        brightnesslevel = brightness;
+        brightnessTextValue.text = brightness.ToString("0.0");
+    }
+
+    public void SetQuality(int qualityIndex) 
+    {
+        qualityLevel = qualityIndex;
+    }
+    public void SetFullScreen(bool isFullscreen) 
+    {
+        _isFullscreen = isFullscreen;
+    }
+
+    public void GraphicsApply() 
+    {
+        PlayerPrefs.SetFloat("masterBrightness", brightnesslevel);
+        //Change the brightness later
+
+        PlayerPrefs.SetInt("masterQuality", qualityLevel);
+        QualitySettings.SetQualityLevel(qualityLevel);
+
+        PlayerPrefs.SetInt("masterFillscrenn", (_isFullscreen ? 1 : 0 ));
+        Screen.fullScreen = _isFullscreen;
+
+        StartCoroutine(ConfirmationBox());
+
     }
 
     public void ResetButton(string MenuType) 
