@@ -8590,7 +8590,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Gameplay
+          m_StringArgument: Graphics
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1243045186
@@ -10119,6 +10119,8 @@ MonoBehaviour:
   brightnessSlider: {fileID: 2061225677}
   brightnessTextValue: {fileID: 151337967}
   defaultBrightness: 1
+  qualityDropdown: {fileID: 248589358}
+  FullScreenToggle: {fileID: 1941998910}
   confirmationPrompt: {fileID: 629194273}
   newGameLevel: Level_1_The_Discovery
   noSavedGameDialog: {fileID: 1515489385}
