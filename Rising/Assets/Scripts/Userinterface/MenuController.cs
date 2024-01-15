@@ -77,9 +77,9 @@ public class MenuController : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void SetResolution(int resulotionIndex) 
+    public void SetResolution(int resolutionIndex) 
     {
-        Resolution resolution = resolutions[resulotionIndex];
+        Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
@@ -164,7 +164,7 @@ public class MenuController : MonoBehaviour
         PlayerPrefs.SetInt("masterQuality", qualityLevel);
         QualitySettings.SetQualityLevel(qualityLevel);
 
-        PlayerPrefs.SetInt("masterFillscrenn", (_isFullscreen ? 1 : 0 ));
+        PlayerPrefs.SetInt("masterFullscreen", (_isFullscreen ? 1 : 0 ));
         Screen.fullScreen = _isFullscreen;
 
         StartCoroutine(ConfirmationBox());
@@ -188,7 +188,7 @@ public class MenuController : MonoBehaviour
             Resolution currentResolution = Screen.currentResolution;
             Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
             resolutionDropdown.value = resolutions.Length;
-            
+
             GraphicsApply();
         }
         if (MenuType == "Audio")
@@ -199,7 +199,7 @@ public class MenuController : MonoBehaviour
             VolumeApply();
         }
 
-        if (MenuType == "GamePlay")
+        if (MenuType == "Gameplay")
         {
             controllerSenTextValue.text = defaultSen.ToString("0");
             controllerSenSlider.value = defaultSen;
