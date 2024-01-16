@@ -52,6 +52,10 @@ public class MenuController : MonoBehaviour
     public TMP_Dropdown  resolutionDropdown;
     private Resolution[] resolutions;
 
+    //[Header("In Game Menu")]
+    //public GameObject playerPrefab;
+    
+
     private void Start() 
     {
         resolutions = Screen.resolutions;
@@ -77,6 +81,7 @@ public class MenuController : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
+
     public void SetResolution(int resolutionIndex) 
     {
         Resolution resolution = resolutions[resolutionIndex];
@@ -88,18 +93,18 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene(newGameLevel);
     }
 
-    public void LoadGameDialaogYes() 
+    public void LoadGameDialogYes()
     {
-        if (PlayerPrefs.HasKey("SavedLevel"))
+        if (PlayerPrefs.HasKey("CurrentLevel"))
         {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            SceneManager.LoadScene(levelToLoad);
+            string levelToLoad = PlayerPrefs.GetString("CurrentLevel");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(levelToLoad);
         }
-        else 
+        else
         {
             noSavedGameDialog.SetActive(true);
         }
-    }
+}
 
     public void ExitButton() 
     {
@@ -216,4 +221,17 @@ public class MenuController : MonoBehaviour
         confirmationPrompt.SetActive(false);
 
     }
+
+    // Methode, die nach dem Laden eines Levels aufgerufen wird, um die Spielerposition zu setzen
+    /*public void OnLevelWasLoaded(int level)
+    {
+        if (PlayerPrefs.HasKey("PlayerPositionX") && player != null)
+        {
+            float x = PlayerPrefs.GetFloat("PlayerPositionX");
+            float y = PlayerPrefs.GetFloat("PlayerPositionY");
+            float z = PlayerPrefs.GetFloat("PlayerPositionZ");
+            player.transform.position = new Vector3(x, y, z);
+        }
+    }
+    */
 }

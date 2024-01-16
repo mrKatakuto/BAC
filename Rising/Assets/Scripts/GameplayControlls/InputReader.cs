@@ -19,6 +19,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action TargetEvent;
     private Controls controls;
 
+    private InGameMenuManager menuManager;
+
     
 
     void Start()
@@ -29,6 +31,9 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         controls.Player.SetCallbacks(this);
 
         controls.Player.Enable();
+
+        //reference to InGameMenu
+        menuManager = FindObjectOfType<InGameMenuManager>();
     }
 
     private void OnDestroy()
@@ -92,6 +97,22 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         else if (context.canceled)
         {
             IsBlocking = false;
+        }
+    }
+
+    public void OnMenu(InputAction.CallbackContext context) 
+    {
+        if (context.performed)
+        {
+            
+        if (menuManager.IsPaused)
+        {
+                menuManager.ResumeGame();
+            }
+            else
+            {
+                menuManager.PauseGame();
+            }
         }
     }
 }
