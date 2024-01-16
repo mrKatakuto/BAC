@@ -61,11 +61,6 @@ public class LoadPrefs : MonoBehaviour
                 QualitySettings.SetQualityLevel(localQuality);
 
             }
-            /*else 
-            {
-                menuController.ResetButton("Quality");
-            }
-            */
 
             if (PlayerPrefs.HasKey("masterFullscreen"))
             {

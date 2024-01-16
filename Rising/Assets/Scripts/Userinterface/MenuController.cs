@@ -40,6 +40,7 @@ public class MenuController : MonoBehaviour
 
     [Header("Confirmation")]
     [SerializeField] private GameObject confirmationPrompt = null;
+    [SerializeField] private GameObject warning;
 
 
     [Header("Levels To Load")]
@@ -58,6 +59,8 @@ public class MenuController : MonoBehaviour
 
     private void Start() 
     {
+        warning.SetActive(false);
+
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -90,7 +93,43 @@ public class MenuController : MonoBehaviour
 
     public void NewGameDialogYes() 
     {
+        if (IsGameSaved())
+        {
+            warning.SetActive(true);
+            //confirmationPrompt.SetActive(true);
+        }
+        /*else 
+        {
+            StartNewGame();
+        }
+        //SceneManager.LoadScene(newGameLevel);
+        */
+    }
+
+    public void StartNewGame() 
+    {
+        DeleteSavedGame();
         SceneManager.LoadScene(newGameLevel);
+    }
+
+    private bool IsGameSaved() 
+    {
+        return PlayerPrefs.HasKey("CurrentLevel");
+    }
+
+    private void DeleteSavedGame()
+    {
+        PlayerPrefs.DeleteKey("PlayerPositionX");
+        PlayerPrefs.DeleteKey("PlayerPositionY");
+        PlayerPrefs.DeleteKey("PlayerPositionZ");
+        PlayerPrefs.DeleteKey("CurrentLevel");
+        PlayerPrefs.Save();
+    }
+
+    public void ConfirmNewGame()
+    {
+        warning.SetActive(false); 
+        StartNewGame();
     }
 
     public void LoadGameDialogYes()
@@ -221,17 +260,4 @@ public class MenuController : MonoBehaviour
         confirmationPrompt.SetActive(false);
 
     }
-
-    // Methode, die nach dem Laden eines Levels aufgerufen wird, um die Spielerposition zu setzen
-    /*public void OnLevelWasLoaded(int level)
-    {
-        if (PlayerPrefs.HasKey("PlayerPositionX") && player != null)
-        {
-            float x = PlayerPrefs.GetFloat("PlayerPositionX");
-            float y = PlayerPrefs.GetFloat("PlayerPositionY");
-            float z = PlayerPrefs.GetFloat("PlayerPositionZ");
-            player.transform.position = new Vector3(x, y, z);
-        }
-    }
-    */
 }

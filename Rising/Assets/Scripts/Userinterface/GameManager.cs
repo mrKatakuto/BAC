@@ -57,11 +57,8 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Szene geladen: {scene.name}");
 
         SetPlayerPosition();
-        
-        //StartCoroutine(SetPlayerPositionAfterDelay());
     }
-
-    // Rufen Sie diese Methode auf, wenn die Szene geladen wird, um die Spielerposition zu setzen
+ 
     public void SetPlayerPosition()
     {
         if (PlayerPrefs.HasKey("PlayerPositionX") && player != null)
@@ -85,18 +82,10 @@ public class GameManager : MonoBehaviour
         confirmationPrompt.SetActive(true);
         yield return new WaitForSeconds(2);
         confirmationPrompt.SetActive(false);
-
     }
 
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    IEnumerator SetPlayerPositionAfterDelay()
-    {
-        yield return new WaitForSeconds(0.1f); // Kurze Verzögerung
-        SetPlayerPosition();
-
     }
 }
