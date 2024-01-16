@@ -98,12 +98,13 @@ public class MenuController : MonoBehaviour
             warning.SetActive(true);
             //confirmationPrompt.SetActive(true);
         }
-        /*else 
+        else 
         {
             StartNewGame();
         }
+        
+        
         //SceneManager.LoadScene(newGameLevel);
-        */
     }
 
     public void StartNewGame() 
