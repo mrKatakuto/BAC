@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += OnSceneLoaded; 
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            Debug.Log("GameManager instanziert und SceneLoaded Event registriert");
         }
         else if (Instance != this)
         {
             Destroy(gameObject);
+            Debug.Log("Zusätzliche Instanz von GameManager zerstört");
         }
     }
 
@@ -31,6 +33,11 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("PlayerPositionZ", player.transform.position.z);
             PlayerPrefs.SetString("CurrentLevel", SceneManager.GetActiveScene().name);
             PlayerPrefs.Save();       
+             Debug.Log($"Spiel gespeichert: Position = {player.transform.position}, Level = {SceneManager.GetActiveScene().name}");
+        }
+        else
+        {
+            Debug.LogWarning("GameManager: Kein Player-GameObject zum Speichern gefunden");
         }
 
         StartCoroutine(ConfirmationBox());
@@ -47,7 +54,11 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log($"Szene geladen: {scene.name}");
+
         SetPlayerPosition();
+        
+        //StartCoroutine(SetPlayerPositionAfterDelay());
     }
 
     // Rufen Sie diese Methode auf, wenn die Szene geladen wird, um die Spielerposition zu setzen
@@ -59,6 +70,13 @@ public class GameManager : MonoBehaviour
             float y = PlayerPrefs.GetFloat("PlayerPositionY");
             float z = PlayerPrefs.GetFloat("PlayerPositionZ");
             player.transform.position = new Vector3(x, y, z);
+
+            Debug.Log($"Spielerposition gesetzt: {player.transform.position}");
+        
+        }
+        else
+        {
+            Debug.LogWarning("GameManager: Keine gespeicherte Position oder kein Player-GameObject gefunden");
         }
     }
 
@@ -72,6 +90,13 @@ public class GameManager : MonoBehaviour
 
     void OnDestroy()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded; // Event Handler entfernen
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    IEnumerator SetPlayerPositionAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f); // Kurze Verzögerung
+        SetPlayerPosition();
+
     }
 }
