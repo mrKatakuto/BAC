@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InGameMenuManager : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class InGameMenuManager : MonoBehaviour
 
         //inputReader.enabled = false;
 
+    }
+
+    public void MainMenuButton() 
+    {
+        SceneManager.LoadScene("Main_Menu");
     }
 
     public void ResumeGame()
