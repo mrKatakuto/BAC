@@ -24,13 +24,13 @@ Tonn-Shader from https://github.com/UnityTechnologies/open-project-1/tree/devlog
 # Release
 
 # Packages use in Project
-Cinemachine
-Input System
-Post Processing
-ProBuilder
-TextMeshPro
-Timeline
-Universal RP
-Visual Effect Graph
-VS Code Editor
-VS Editor
+Cinemachine,
+Input System,
+Post Processing,
+ProBuilder,
+TextMeshPro,
+Timeline,
+Universal RP,
+Visual Effect Graph,
+VS Code Editor,
+VS Editor,
