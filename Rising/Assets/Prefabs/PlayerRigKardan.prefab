@@ -1322,6 +1322,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerIndicator
       objectReference: {fileID: 0}
+    - target: {fileID: 6486192722680054230, guid: b2543df98a07a934abde4e90333bb985,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486192722680054230, guid: b2543df98a07a934abde4e90333bb985,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6658755938391598875, guid: b2543df98a07a934abde4e90333bb985,
         type: 3}
       propertyPath: m_Color.a

@@ -89,6 +89,7 @@ public class MenuController : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        Debug.Log($"Resolution set to: {resolution.width} x {resolution.height}, Fullscreen: {Screen.fullScreen}");
     }
 
     public void NewGameDialogYes() 
