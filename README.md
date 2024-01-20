@@ -22,3 +22,15 @@ This project was created by Alen Galusic
 Tonn-Shader from https://github.com/UnityTechnologies/open-project-1/tree/devlogs/1-toon-shading
 
 # Release
+
+# Packages use in Project
+Cinemachine
+Input System
+Post Processing
+ProBuilder
+TextMeshPro
+Timeline
+Universal RP
+Visual Effect Graph
+VS Code Editor
+VS Editor
