@@ -1,2 +1,12 @@
 # Projekt_Bac_Media_IT
+
+# Game Title
 RISING: Per aspera ad astra
+
+# Specification
+
+Unity Version: 2021.3.31f1
+
+Game Art Style: Tonn-Shader from https://github.com/UnityTechnologies/open-project-1/tree/devlogs/1-toon-shading (CharacterToonV2.shadergraph)
+
+Packages used in Project: Cinemachine, Input System, Post Processing, ProBuilder, TextMeshPro, Timeline, Universal RP, Visual Effect Graph, VS Code Editor, VS Editor
