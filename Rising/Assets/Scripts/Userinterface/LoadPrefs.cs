@@ -85,7 +85,8 @@ public class LoadPrefs : MonoBehaviour
                 brightnessTextValue.text = localBrightness.ToString("0.0");
                 brightnessSlider.value = localBrightness;
                 // change brightness
-                
+
+                RenderSettings.ambientIntensity = localBrightness;                
             }
 
             if (PlayerPrefs.HasKey("masterSen"))

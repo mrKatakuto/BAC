@@ -190,6 +190,9 @@ public class MenuController : MonoBehaviour
     {
         brightnesslevel = brightness;
         brightnessTextValue.text = brightness.ToString("0.0");
+
+        //Erste möglichkeit brightness zu ändern
+        RenderSettings.ambientIntensity = brightnesslevel;
     }
 
     public void SetQuality(int qualityIndex) 
