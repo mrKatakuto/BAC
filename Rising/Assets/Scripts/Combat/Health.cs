@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private Slider healthBarSlider;
+
 
     private int health;
 
@@ -21,6 +24,8 @@ public class Health : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        healthBarSlider.maxValue = maxHealth;
+        healthBarSlider.value = health;
     }
 
     public void SetInvulnerable(bool isInvunerable) 
@@ -49,6 +54,7 @@ public class Health : MonoBehaviour
             OnDie?.Invoke();
         }
 
-        Debug.Log(health);
+        //Debug.Log(health);
+        healthBarSlider.value = health;
     }
 }
