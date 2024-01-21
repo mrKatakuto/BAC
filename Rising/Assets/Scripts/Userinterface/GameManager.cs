@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
-            Debug.Log("GameManager instanziert und SceneLoaded Event registriert");
+
+            //Debug.Log("GameManager instanziert und SceneLoaded Event registriert");
         }
         else if (Instance != this)
         {
             Destroy(gameObject);
-            Debug.Log("Zusätzliche Instanz von GameManager zerstört");
+
+            //Debug.Log("Zusätzliche Instanz von GameManager zerstört");
         }
     }
 
@@ -32,8 +34,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("PlayerPositionY", player.transform.position.y);
             PlayerPrefs.SetFloat("PlayerPositionZ", player.transform.position.z);
             PlayerPrefs.SetString("CurrentLevel", SceneManager.GetActiveScene().name);
-            PlayerPrefs.Save();       
-             Debug.Log($"Spiel gespeichert: Position = {player.transform.position}, Level = {SceneManager.GetActiveScene().name}");
+            PlayerPrefs.Save();
+
+            Debug.Log($"Spiel gespeichert: Position = {player.transform.position}, Level = {SceneManager.GetActiveScene().name}");
         }
         else
         {
@@ -68,18 +71,37 @@ public class GameManager : MonoBehaviour
             float z = PlayerPrefs.GetFloat("PlayerPositionZ");
             player.transform.position = new Vector3(x, y, z);
 
-            Debug.Log($"Spielerposition gesetzt: {player.transform.position}");
+            //Debug.Log($"Spielerposition gesetzt: {player.transform.position}");
         
         }
         else
         {
-            Debug.LogWarning("GameManager: Keine gespeicherte Position oder kein Player-GameObject gefunden");
+            //Debug.LogWarning("GameManager: Keine gespeicherte Position oder kein Player-GameObject gefunden");
         }
     }
+
+    private IEnumerator RotateConfirmationPrompt()
+    {
+        float rotationDuration = 2.0f; 
+        float elapsedTime = 0;
+
+        while (elapsedTime < rotationDuration)
+        {
+            
+            confirmationPrompt.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 360 * Time.deltaTime / rotationDuration));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        
+        confirmationPrompt.GetComponent<RectTransform>().localRotation = Quaternion.identity;
+    }
+
 
     public IEnumerator ConfirmationBox() 
     {
         confirmationPrompt.SetActive(true);
+        StartCoroutine(RotateConfirmationPrompt());
         yield return new WaitForSeconds(2);
         confirmationPrompt.SetActive(false);
     }

@@ -44,7 +44,7 @@ public class MenuController : MonoBehaviour
 
     [Header("Levels To Load")]
     public string newGameLevel;
-    private string levelToLoad;
+    //private string levelToLoad;
     [SerializeField] private GameObject noSavedGameDialog = null;
 
 
@@ -277,7 +277,6 @@ public class MenuController : MonoBehaviour
         
         confirmationPrompt.GetComponent<RectTransform>().localRotation = Quaternion.identity;
     }
-
 
     public IEnumerator ConfirmationBox() 
     {
