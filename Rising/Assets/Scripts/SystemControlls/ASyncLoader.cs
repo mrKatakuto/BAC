@@ -44,8 +44,6 @@ public class ASyncLoader : MonoBehaviour
 
             yield return null;
         }
-
-        
     }
 }
 

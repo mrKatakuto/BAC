@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    /* public static GameManager Instance { get; private set; }
     [SerializeField] private GameObject confirmationPrompt = null;
-    public static GameManager Instance { get; private set; }
     public GameObject player;
-
+   
     void Awake()
     {
         if (Instance == null)
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("CurrentLevel"))
         {
             string levelToLoad = PlayerPrefs.GetString("CurrentLevel");
+
             SceneManager.LoadScene(levelToLoad);
         }
     }
@@ -108,4 +109,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+    */
 }

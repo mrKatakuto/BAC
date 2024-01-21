@@ -98,7 +98,6 @@ public class MenuController : MonoBehaviour
         if (IsGameSaved())
         {
             warning.SetActive(true);
-            
         }
         else 
         {
@@ -110,6 +109,11 @@ public class MenuController : MonoBehaviour
     {
         DeleteSavedGame();
         asyncLoader.LoadLevelBtn(newGameLevel);
+        // hinzu
+        GameManager1.Instance.SaveGame(); // Speichere das Spiel beim Start
+
+        
+
     }
 
     private bool IsGameSaved() 
@@ -136,8 +140,11 @@ public class MenuController : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("CurrentLevel"))
         {
-            string levelToLoad = PlayerPrefs.GetString("CurrentLevel");
-            asyncLoader.LoadLevelBtn(levelToLoad);
+            // Hinzu 
+            GameManager1.Instance.LoadGame(); // Lade das Spiel
+
+            //string levelToLoad = PlayerPrefs.GetString("CurrentLevel");
+            //asyncLoader.LoadLevelBtn(levelToLoad);
         }
         else
         {

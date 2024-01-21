@@ -30,6 +30,7 @@ public class InGameMenuManager : MonoBehaviour
 
     public void MainMenuButton() 
     {
+        GameManager1.Instance.SaveGame(); // Speichere das Spiel vor dem Wechsel
         SceneManager.LoadScene("Main_Menu");
     }
 }
