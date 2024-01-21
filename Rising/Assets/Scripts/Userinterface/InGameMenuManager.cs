@@ -1,40 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class InGameMenuManager : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
     public bool IsPaused { get; private set; }
-
-    //public InputReader inputReader;
-
+    public GameObject pauseMenuUI;
+    private InputReader inputReader;
     
+    private void Start()
+    {
+        inputReader = FindObjectOfType<InputReader>();
+    }
 
     public void PauseGame()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0f;  // Pausiere das Spiel
         IsPaused = true;
-
-        //inputReader.enabled = false;
-
-    }
-
-    public void MainMenuButton() 
-    {
-        SceneManager.LoadScene("Main_Menu");
+        inputReader.enabled = false;  // Deaktiviere InputReader
     }
 
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1f;  // Setze das Spiel fort
         IsPaused = false;
+        inputReader.enabled = true;  // Aktiviere InputReader
+    }
 
-        //inputReader.enabled = true;
-
+    public void MainMenuButton() 
+    {
+        SceneManager.LoadScene("Main_Menu");
     }
 }

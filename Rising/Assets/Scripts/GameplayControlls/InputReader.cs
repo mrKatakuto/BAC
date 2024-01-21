@@ -78,6 +78,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (menuManager.IsPaused) return; // Ignoriere Angriff, wenn das Menü aktiv ist
+
         if (context.performed)
         {
             IsAttacking = true;

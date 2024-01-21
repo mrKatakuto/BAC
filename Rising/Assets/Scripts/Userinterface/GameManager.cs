@@ -80,30 +80,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator RotateConfirmationPrompt()
+    public IEnumerator ConfirmationBox() 
     {
-        float rotationDuration = 2.0f; 
+        confirmationPrompt.SetActive(true);
+        yield return StartCoroutine(RotateConfirmationPrompt());
+        yield return new WaitForSeconds(1);
+        confirmationPrompt.SetActive(false);
+    }
+
+    public IEnumerator RotateConfirmationPrompt()
+    {
+        float rotationDuration = 2.0f; // Dauer der Rotation in Sekunden
         float elapsedTime = 0;
 
         while (elapsedTime < rotationDuration)
         {
-            
-            confirmationPrompt.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 360 * Time.deltaTime / rotationDuration));
-            elapsedTime += Time.deltaTime;
+            float angle = (360 / rotationDuration) * Time.unscaledDeltaTime;
+            confirmationPrompt.transform.Rotate(0, 0, angle);
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        
-        confirmationPrompt.GetComponent<RectTransform>().localRotation = Quaternion.identity;
-    }
-
-
-    public IEnumerator ConfirmationBox() 
-    {
-        confirmationPrompt.SetActive(true);
-        StartCoroutine(RotateConfirmationPrompt());
-        yield return new WaitForSeconds(2);
-        confirmationPrompt.SetActive(false);
+    confirmationPrompt.transform.rotation = Quaternion.identity; // Zurücksetzen der Rotation
     }
 
     void OnDestroy()

@@ -159,7 +159,8 @@ public class MenuController : MonoBehaviour
     public void VolumeApply() 
     {
         PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
-        StartCoroutine(ConfirmationBox());
+    
+        StartCoroutine(ConfirmationBox());    
     }
 
     public void SetConntrollerSen(float sensitivity) 
@@ -282,7 +283,7 @@ public class MenuController : MonoBehaviour
     {
         confirmationPrompt.SetActive(true);
         StartCoroutine(RotateConfirmationPrompt());
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         confirmationPrompt.SetActive(false);
     }
 }
