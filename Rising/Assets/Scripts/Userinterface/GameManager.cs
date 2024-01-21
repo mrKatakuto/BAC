@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator RotateConfirmationPrompt()
     {
-        float rotationDuration = 2.0f; // Dauer der Rotation in Sekunden
+        float rotationDuration = 2.0f; 
         float elapsedTime = 0;
 
         while (elapsedTime < rotationDuration)
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-    confirmationPrompt.transform.rotation = Quaternion.identity; // Zurücksetzen der Rotation
+        confirmationPrompt.transform.rotation = Quaternion.identity; // Zurücksetzen der Rotation
     }
 
     void OnDestroy()

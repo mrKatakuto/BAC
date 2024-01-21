@@ -17,7 +17,7 @@ public class InGameMenuManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;  // Pausiere das Spiel
         IsPaused = true;
-        inputReader.enabled = false;  // Deaktiviere InputReader
+        inputReader.enabled = false;  
     }
 
     public void ResumeGame()
@@ -25,7 +25,7 @@ public class InGameMenuManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;  // Setze das Spiel fort
         IsPaused = false;
-        inputReader.enabled = true;  // Aktiviere InputReader
+        inputReader.enabled = true;  
     }
 
     public void MainMenuButton() 
