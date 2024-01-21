@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Rendering;
 using TMPro;
-using Unity.VisualScripting;
+
 
 public class MenuController : MonoBehaviour
 {
@@ -53,12 +52,14 @@ public class MenuController : MonoBehaviour
     public TMP_Dropdown  resolutionDropdown;
     private Resolution[] resolutions;
 
-    //[Header("In Game Menu")]
-    //public GameObject playerPrefab;
-    
+    [SerializeField] private AudioSource buttonClickAudioSource;
+    [SerializeField] private AudioClip buttonClickSound;
+
+    public ASyncLoader asyncLoader;
 
     private void Start() 
     {
+
         warning.SetActive(false);
 
         resolutions = Screen.resolutions;
@@ -97,21 +98,18 @@ public class MenuController : MonoBehaviour
         if (IsGameSaved())
         {
             warning.SetActive(true);
-            //confirmationPrompt.SetActive(true);
+            
         }
         else 
         {
-            StartNewGame();
+            asyncLoader.LoadLevelBtn(newGameLevel);
         }
-        
-        
-        //SceneManager.LoadScene(newGameLevel);
     }
 
     public void StartNewGame() 
     {
         DeleteSavedGame();
-        SceneManager.LoadScene(newGameLevel);
+        asyncLoader.LoadLevelBtn(newGameLevel);
     }
 
     private bool IsGameSaved() 
@@ -139,13 +137,13 @@ public class MenuController : MonoBehaviour
         if (PlayerPrefs.HasKey("CurrentLevel"))
         {
             string levelToLoad = PlayerPrefs.GetString("CurrentLevel");
-            UnityEngine.SceneManagement.SceneManager.LoadScene(levelToLoad);
+            asyncLoader.LoadLevelBtn(levelToLoad);
         }
         else
         {
             noSavedGameDialog.SetActive(true);
         }
-}
+    }
 
     public void ExitButton() 
     {
@@ -258,11 +256,34 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void OnButtonClick()
+    {
+        buttonClickAudioSource.PlayOneShot(buttonClickSound);
+    }
+
+    private IEnumerator RotateConfirmationPrompt()
+    {
+        float rotationDuration = 2.0f; 
+        float elapsedTime = 0;
+
+        while (elapsedTime < rotationDuration)
+        {
+            
+            confirmationPrompt.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 360 * Time.deltaTime / rotationDuration));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        
+        confirmationPrompt.GetComponent<RectTransform>().localRotation = Quaternion.identity;
+    }
+
+
     public IEnumerator ConfirmationBox() 
     {
         confirmationPrompt.SetActive(true);
+        StartCoroutine(RotateConfirmationPrompt());
         yield return new WaitForSeconds(2);
         confirmationPrompt.SetActive(false);
-
     }
 }

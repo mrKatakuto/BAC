@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_1_The_Discovery.unity
     guid: 1070f3d0ae8d3634aa6aeeaf5feef74d
+  - enabled: 1
+    path: Assets/Scenes/Level_2_Network_of_Secrets.unity
+    guid: ab2570d0ab721344fb12d066676d47a2
   m_configObjects: {}
