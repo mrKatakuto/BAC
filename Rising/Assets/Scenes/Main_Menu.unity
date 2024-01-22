@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2962,7 +2962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &384465875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3000,29 +3000,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 391984253}
-  - component: {fileID: 391984252}
+  - component: {fileID: 391984254}
   m_Layer: 0
-  m_Name: ASyncLoader
+  m_Name: Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &391984252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391984251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca98a470a9fa8b4fb1c566c088b1ed0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 202118477}
-  mainMenu: {fileID: 1558690511}
-  loadingSlider: {fileID: 1792206887}
 --- !u!4 &391984253
 Transform:
   m_ObjectHideFlags: 0
@@ -3038,6 +3023,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &391984254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391984251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a220621e1bc12458955ae894591d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 202118477}
+  mainMenu: {fileID: 1558690511}
+  loadingSlider: {fileID: 1792206887}
 --- !u!1 &394119997
 GameObject:
   m_ObjectHideFlags: 0
@@ -10952,7 +10952,7 @@ MonoBehaviour:
   resolutionDropdown: {fileID: 20531920}
   buttonClickAudioSource: {fileID: 1499847758}
   buttonClickSound: {fileID: 8300000, guid: 9988a42543a0f1d40820b7b9a6bb4e98, type: 3}
-  asyncLoader: {fileID: 391984252}
+  loader: {fileID: 391984254}
 --- !u!4 &1499847757
 Transform:
   m_ObjectHideFlags: 0
@@ -12492,7 +12492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265, y: -558}
+  m_AnchoredPosition: {x: -265, y: -498}
   m_SizeDelta: {x: 355.6704, y: 52.3811}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1808248757

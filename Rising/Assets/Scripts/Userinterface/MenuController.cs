@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,6 @@ public class MenuController : MonoBehaviour
 
     [Header("Levels To Load")]
     public string newGameLevel;
-    private string levelToLoad;
     [SerializeField] private GameObject noSavedGameDialog = null;
 
 
@@ -57,26 +57,31 @@ public class MenuController : MonoBehaviour
     [SerializeField] private AudioClip buttonClickSound;
 
     [Header("References")]
-    public ASyncLoader asyncLoader;
+     //public ASyncLoader asyncLoader;
+     public Loader loader;
 
     private void Start() 
     {
+        InitializeResolutionSettings();
+    }
+
+    private void InitializeResolutionSettings()
+    {
+        // Konfiguriert die Auflösungs-Optionen im UI
 
         warning.SetActive(false);
 
-        /*resolutions = Screen.resolutions;
+        resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
-
         List<string> options = new List<string>();
-
         int currentResolutionIndex = 0;
 
         for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + "x" + resolutions[i].height;
             options.Add(option);
-
-            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            if (resolutions[i].width == Screen.currentResolution.width && 
+                resolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
             }
@@ -85,9 +90,15 @@ public class MenuController : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
-        */
+
+        SetStartResolution();
     }
 
+    private void SetStartResolution()
+    {
+        Resolution currentRes = Screen.currentResolution;
+        SetResolution(Array.IndexOf(resolutions, currentRes));
+    }
 
     public void SetResolution(int resolutionIndex) 
     {
@@ -99,10 +110,10 @@ public class MenuController : MonoBehaviour
     public void NewGameDialogYes() 
     {
         Debug.Log("NewGameDialogYes called");
+
         if (IsGameSaved())
         {
             warning.SetActive(true);
-            Debug.Log("Warning: Game already saved");
         }
         else 
         {
@@ -112,11 +123,9 @@ public class MenuController : MonoBehaviour
     }
 
     public void StartNewGame() 
-    {
-        Debug.Log("Starting new game");
-        
-        asyncLoader.LoadLevelBtn(newGameLevel);
-        
+    {     
+        //asyncLoader.LoadLevelBtn(newGameLevel);
+        loader.LoadLevel(newGameLevel);
     }
 
     private bool IsGameSaved() 
@@ -135,10 +144,7 @@ public class MenuController : MonoBehaviour
 
     public void ConfirmNewGame()
     {
-        //Debug.Log("Confirming new game");
-
         warning.SetActive(false);
-
         DeleteSavedGame(); 
         StartNewGame();
     }
@@ -147,8 +153,7 @@ public class MenuController : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("CurrentLevel"))
         {
-            GameManager1.Instance.LoadGame(); // Lade das Spiel
-            //asyncLoader.LoadLevelBtn(newGameLevel);
+            GameManager1.Instance.LoadGame(); 
         }
         else
         {
@@ -160,6 +165,7 @@ public class MenuController : MonoBehaviour
     {
         buttonClickAudioSource.PlayOneShot(buttonClickSound);
     }
+
     public void ExitButton() 
     {
         Application.Quit();
@@ -214,6 +220,7 @@ public class MenuController : MonoBehaviour
     {
         qualityLevel = qualityIndex;
     }
+
     public void SetFullScreen(bool isFullscreen) 
     {
         _isFullscreen = isFullscreen;
@@ -231,14 +238,13 @@ public class MenuController : MonoBehaviour
         Screen.fullScreen = _isFullscreen;
 
         StartCoroutine(ConfirmationBox());
-
     }
 
     public void ResetButton(string MenuType) 
     {
         if (MenuType == "Graphics")
         {
-            //Reset brightness value
+            // Reset brightness value
             brightnessSlider.value = defaultBrightness;
             brightnessTextValue.text = defaultBrightness.ToString("0.0");
 
@@ -248,9 +254,11 @@ public class MenuController : MonoBehaviour
             FullScreenToggle.isOn = false;
             Screen.fullScreen = false;
 
-            Resolution currentResolution = Screen.currentResolution;
-            Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
-            resolutionDropdown.value = resolutions.Length;
+            // Korrigiere das Zurücksetzen der Auflösung
+            int defaultResolutionIndex = Array.IndexOf(resolutions, Screen.currentResolution);
+            defaultResolutionIndex = defaultResolutionIndex >= 0 ? defaultResolutionIndex : 0;
+            resolutionDropdown.value = defaultResolutionIndex;
+            SetResolution(defaultResolutionIndex);
 
             GraphicsApply();
         }
@@ -272,27 +280,9 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    private IEnumerator RotateConfirmationPrompt()
-    {
-        float rotationDuration = 2.0f; 
-        float elapsedTime = 0;
-
-        while (elapsedTime < rotationDuration)
-        {
-            
-            confirmationPrompt.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 360 * Time.deltaTime / rotationDuration));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        
-        confirmationPrompt.GetComponent<RectTransform>().localRotation = Quaternion.identity;
-    }
-
     public IEnumerator ConfirmationBox() 
     {
         confirmationPrompt.SetActive(true);
-        //StartCoroutine(RotateConfirmationPrompt());
         yield return new WaitForSeconds(1);
         confirmationPrompt.SetActive(false);
     }

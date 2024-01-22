@@ -114,7 +114,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             
         if (menuManager.IsPaused)
         {
-                menuManager.ResumeGame();
+                menuManager.ResumeGameESC();
             }
             else
             {
