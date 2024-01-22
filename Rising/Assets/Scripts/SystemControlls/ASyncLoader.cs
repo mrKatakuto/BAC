@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ASyncLoader : MonoBehaviour
 {
@@ -15,35 +14,45 @@ public class ASyncLoader : MonoBehaviour
 
     public void LoadLevelBtn(string levelToLoad) 
     {
-        mainMenu.SetActive(false);
+
         loadingScreen.SetActive(true);
+        loadingSlider.value = 0f; 
+
+        mainMenu.SetActive(false);
         StartCoroutine(LoadLevelASync(levelToLoad));
     }
 
     IEnumerator LoadLevelASync(string levelToLoad) 
     {
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
+
+        // bei false bleibt es hängen
         loadOperation.allowSceneActivation = false;
 
-        float minLoadTime = 10f; 
-        float startTime = Time.time;
+        float minLoadTime = 5f; 
+        //float startTime = Time.time;
+        
+        float timeElapsed =  0;
 
         while (!loadOperation.isDone)
         {
-            
-            float timeElapsed = Time.time - startTime;
-            
+            timeElapsed += Time.deltaTime;
+
             float progress = Mathf.Clamp01(timeElapsed / minLoadTime);
-            loadingSlider.value = progress;
 
             
-            if (timeElapsed >= minLoadTime && loadOperation.progress >= 0.9f)
+            loadingSlider.value = progress;
+
+            if (timeElapsed >= minLoadTime)
             {
-                loadOperation.allowSceneActivation = true; 
+                Debug.Log("Scene ready to activate");
+                loadOperation.allowSceneActivation = true;
+                
+                // Log-Ausgabe hinzufügen, um zu bestätigen, dass die Szene zur Aktivierung bereit ist
+                Debug.Log($"Activating scene: {levelToLoad}");
             }
 
             yield return null;
         }
     }
 }
-

@@ -21,25 +21,30 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     private InGameMenuManager menuManager;
 
-    
+    private void Awake()
+    {
+        controls = new Controls();
+    }
 
     void Start()
     {
-        controls = new Controls();
-
         // reference to the actual input methods (action maps)
         controls.Player.SetCallbacks(this);
-
         controls.Player.Enable();
 
-        //reference to InGameMenu
+        // reference to InGameMenu
         menuManager = FindObjectOfType<InGameMenuManager>();
     }
 
     private void OnDestroy()
     {
-        controls.Disable();
+        if (controls != null)
+        {
+            controls.Disable();
+        }
     }
+
+    
 
     public void OnJump(InputAction.CallbackContext context)
     {

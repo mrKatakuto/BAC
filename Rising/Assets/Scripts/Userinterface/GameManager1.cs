@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Stimmt
 public class GameManager1 : MonoBehaviour
 {
     public static GameManager1 Instance { get; private set; }
@@ -19,11 +20,6 @@ public class GameManager1 : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void Update()
-    {
-        Debug.Log(gameObject.name + " position: " + transform.position);
     }
 
     private void OnDestroy()
@@ -44,6 +40,12 @@ public class GameManager1 : MonoBehaviour
     {
         if (player == null)
         {
+            //Debug.LogError("SaveGame: Player object not found.");
+            return;
+        }
+
+        if (player == null)
+        {
             FindPlayer();
         }
 
@@ -55,18 +57,27 @@ public class GameManager1 : MonoBehaviour
             PlayerPrefs.SetString("CurrentLevel", SceneManager.GetActiveScene().name);
             PlayerPrefs.Save();
 
-            Debug.Log("Saved Scene: " + PlayerPrefs.GetString("CurrentLevel"));
-            Debug.Log("Saved Position: " + new Vector3(PlayerPrefs.GetFloat("PlayerPositionX"), PlayerPrefs.GetFloat("PlayerPositionY"), PlayerPrefs.GetFloat("PlayerPositionZ")));
+            //Debug.Log("Saved Scene: " + PlayerPrefs.GetString("CurrentLevel"));
+            //Debug.Log("Saved Position: " + new Vector3(PlayerPrefs.GetFloat("PlayerPositionX"), PlayerPrefs.GetFloat("PlayerPositionY"), PlayerPrefs.GetFloat("PlayerPositionZ")));
+            //Debug.Log("Saved Scene: " + PlayerPrefs.GetString("CurrentLevel"));
+
         }
     }
 
     public void LoadGame()
     {
+        //hinzu
+        if (!PlayerPrefs.HasKey("CurrentLevel"))
+        {
+            //Debug.LogError("LoadGame: No saved game found.");
+            return;
+        }
+
         if (PlayerPrefs.HasKey("CurrentLevel"))
         {
             string levelToLoad = PlayerPrefs.GetString("CurrentLevel");
 
-            Debug.Log("Loading level: " + levelToLoad);
+            //Debug.Log("Loading level: " + levelToLoad);
 
             SceneManager.LoadScene(levelToLoad);
             StartCoroutine(WaitForSceneLoad());
@@ -85,11 +96,11 @@ public class GameManager1 : MonoBehaviour
         if (player != null)
         {
             SetPlayerPosition();
-            Debug.Log("Player position set: " + player.transform.position);
+            //Debug.Log("Player position set: " + player.transform.position);
         }
         else
         {
-            Debug.LogError("Player not found in the loaded scene.");
+            //Debug.LogError("Player not found in the loaded scene.");
         }
     }
 

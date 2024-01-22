@@ -44,7 +44,7 @@ public class MenuController : MonoBehaviour
 
     [Header("Levels To Load")]
     public string newGameLevel;
-    //private string levelToLoad;
+    private string levelToLoad;
     [SerializeField] private GameObject noSavedGameDialog = null;
 
 
@@ -52,9 +52,11 @@ public class MenuController : MonoBehaviour
     public TMP_Dropdown  resolutionDropdown;
     private Resolution[] resolutions;
 
+    [Header("On Click Sound")]
     [SerializeField] private AudioSource buttonClickAudioSource;
     [SerializeField] private AudioClip buttonClickSound;
 
+    [Header("References")]
     public ASyncLoader asyncLoader;
 
     private void Start() 
@@ -62,7 +64,7 @@ public class MenuController : MonoBehaviour
 
         warning.SetActive(false);
 
-        resolutions = Screen.resolutions;
+        /*resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
@@ -83,6 +85,7 @@ public class MenuController : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+        */
     }
 
 
@@ -95,25 +98,25 @@ public class MenuController : MonoBehaviour
 
     public void NewGameDialogYes() 
     {
+        Debug.Log("NewGameDialogYes called");
         if (IsGameSaved())
         {
             warning.SetActive(true);
+            Debug.Log("Warning: Game already saved");
         }
         else 
         {
-            asyncLoader.LoadLevelBtn(newGameLevel);
+            DeleteSavedGame();
+            StartNewGame();;
         }
     }
 
     public void StartNewGame() 
     {
-        DeleteSavedGame();
-        asyncLoader.LoadLevelBtn(newGameLevel);
-        // hinzu
-        GameManager1.Instance.SaveGame(); // Speichere das Spiel beim Start
-
+        Debug.Log("Starting new game");
         
-
+        asyncLoader.LoadLevelBtn(newGameLevel);
+        
     }
 
     private bool IsGameSaved() 
@@ -132,7 +135,11 @@ public class MenuController : MonoBehaviour
 
     public void ConfirmNewGame()
     {
-        warning.SetActive(false); 
+        //Debug.Log("Confirming new game");
+
+        warning.SetActive(false);
+
+        DeleteSavedGame(); 
         StartNewGame();
     }
 
@@ -140,11 +147,8 @@ public class MenuController : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("CurrentLevel"))
         {
-            // Hinzu 
             GameManager1.Instance.LoadGame(); // Lade das Spiel
-
-            //string levelToLoad = PlayerPrefs.GetString("CurrentLevel");
-            //asyncLoader.LoadLevelBtn(levelToLoad);
+            //asyncLoader.LoadLevelBtn(newGameLevel);
         }
         else
         {
@@ -152,6 +156,10 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void OnButtonClick()
+    {
+        buttonClickAudioSource.PlayOneShot(buttonClickSound);
+    }
     public void ExitButton() 
     {
         Application.Quit();
@@ -264,11 +272,6 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void OnButtonClick()
-    {
-        buttonClickAudioSource.PlayOneShot(buttonClickSound);
-    }
-
     private IEnumerator RotateConfirmationPrompt()
     {
         float rotationDuration = 2.0f; 
@@ -289,7 +292,7 @@ public class MenuController : MonoBehaviour
     public IEnumerator ConfirmationBox() 
     {
         confirmationPrompt.SetActive(true);
-        StartCoroutine(RotateConfirmationPrompt());
+        //StartCoroutine(RotateConfirmationPrompt());
         yield return new WaitForSeconds(1);
         confirmationPrompt.SetActive(false);
     }
