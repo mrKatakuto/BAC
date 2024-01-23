@@ -24,6 +24,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
+
         stateMachine.InputReader.TargetEvent += OnTarget;
 
         stateMachine.InputReader.JumpEvent += OnJump;

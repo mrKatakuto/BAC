@@ -50,7 +50,11 @@ public class PlayerStateMachine : StateMachine
         
         MainCameraTransform = Camera.main.transform;
 
-        SwitchState(new PlayerFreeLookState(this));
+        // 23.01. hinzu
+        SwitchState(new PlayerSittingState(this));
+
+        // 23.01. auskomm
+        //SwitchState(new PlayerFreeLookState(this));
     }
 
         private void OnEnable() 

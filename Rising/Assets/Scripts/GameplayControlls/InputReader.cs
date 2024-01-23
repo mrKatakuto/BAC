@@ -11,6 +11,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public bool IsBlocking {get; private set; }
 
+    public bool IsSitting;
+
     public Vector2 MovementValue {  get; private set; }
 
     // Events for the actions everyone who listens will react
@@ -120,6 +122,14 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             {
                 menuManager.PauseGame();
             }
+        }
+    }
+
+    public void OnStandUp(InputAction.CallbackContext context) 
+    {
+        if (context.performed)
+        {
+            IsSitting  = false;
         }
     }
 }

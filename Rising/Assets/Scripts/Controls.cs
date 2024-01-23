@@ -98,6 +98,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StandUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""18242cff-29ca-431b-9878-99985fbe20aa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -375,6 +384,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02e73487-036c-44af-89ab-32a0d867c7d3"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""StandUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -419,6 +439,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+        m_Player_StandUp = m_Player.FindAction("StandUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -488,6 +509,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Menu;
+    private readonly InputAction m_Player_StandUp;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -500,6 +522,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
+        public InputAction @StandUp => m_Wrapper.m_Player_StandUp;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -533,6 +556,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Menu.started += instance.OnMenu;
             @Menu.performed += instance.OnMenu;
             @Menu.canceled += instance.OnMenu;
+            @StandUp.started += instance.OnStandUp;
+            @StandUp.performed += instance.OnStandUp;
+            @StandUp.canceled += instance.OnStandUp;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -561,6 +587,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Menu.started -= instance.OnMenu;
             @Menu.performed -= instance.OnMenu;
             @Menu.canceled -= instance.OnMenu;
+            @StandUp.started -= instance.OnStandUp;
+            @StandUp.performed -= instance.OnStandUp;
+            @StandUp.canceled -= instance.OnStandUp;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -606,5 +635,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnStandUp(InputAction.CallbackContext context);
     }
 }
