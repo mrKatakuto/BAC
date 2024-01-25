@@ -50,6 +50,7 @@ public class InGameMenuManager : MonoBehaviour
     public void MainMenuButton() 
     {
         GameManager1.Instance.SaveGame();
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Main_Menu");
     }
 

@@ -123,7 +123,8 @@ public class MenuController : MonoBehaviour
     }
 
     public void StartNewGame() 
-    {     
+    {    Debug.Log("StartNewGame called");
+    
         //asyncLoader.LoadLevelBtn(newGameLevel);
         loader.LoadLevel(newGameLevel);
     }
@@ -135,6 +136,8 @@ public class MenuController : MonoBehaviour
 
     private void DeleteSavedGame()
     {
+        Debug.Log("DeleteSaved called");
+
         PlayerPrefs.DeleteKey("PlayerPositionX");
         PlayerPrefs.DeleteKey("PlayerPositionY");
         PlayerPrefs.DeleteKey("PlayerPositionZ");
@@ -144,6 +147,7 @@ public class MenuController : MonoBehaviour
 
     public void ConfirmNewGame()
     {
+        Debug.Log("Confirm game called");
         warning.SetActive(false);
         DeleteSavedGame(); 
         StartNewGame();
