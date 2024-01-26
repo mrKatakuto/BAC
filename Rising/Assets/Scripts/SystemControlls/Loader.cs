@@ -24,7 +24,7 @@ public class Loader : MonoBehaviour
 
     IEnumerator LoadLevelWithDelay(string levelToLoad, float delay) 
     {
-        Debug.Log(levelToLoad + ", " + delay);
+        //Debug.Log(levelToLoad + ", " + delay);
 
         float timeElapsed = 0f;
 
@@ -33,13 +33,14 @@ public class Loader : MonoBehaviour
             
             timeElapsed += Time.deltaTime;
             float progress = timeElapsed / delay;
-            Debug.Log($"progres: {progress} delta: {Time.deltaTime}");
+
+            //Debug.Log($"progres: {progress} delta: {Time.deltaTime}");
         
             loadingSlider.value = progress;
             yield return null;
         }
 
-        Debug.Log("While schleife verlassen");
+        //Debug.Log("While schleife verlassen");
 
         SceneManager.LoadScene(levelToLoad);
     }

@@ -54,7 +54,8 @@ public class GameManager1 : MonoBehaviour
 
     public void LoadGame()
     {
-        inputReader.enabled = true;
+        // auskommentiert am 26.01
+        //inputReader.enabled = true;
 
         if (PlayerPrefs.HasKey("CurrentLevel"))
         {

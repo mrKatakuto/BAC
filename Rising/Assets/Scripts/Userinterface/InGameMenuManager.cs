@@ -8,6 +8,7 @@ public class InGameMenuManager : MonoBehaviour
     [SerializeField] private GameObject confirmationPrompt = null;
     public GameObject pauseMenuUI;
     private InputReader inputReader;
+    public Loader loader;
 
     private void Start()
     {
@@ -51,7 +52,10 @@ public class InGameMenuManager : MonoBehaviour
     {
         GameManager1.Instance.SaveGame();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Main_Menu");
+        // auskommentier 26.01
+        //SceneManager.LoadScene("Main_Menu");
+        // hinzu 26.01
+        loader.LoadLevel("Main_Menu");
     }
 
     public IEnumerator ConfirmationBox() 
