@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+//richtig
 public class Loader : MonoBehaviour
 {
     [Header("Menu Screens")]

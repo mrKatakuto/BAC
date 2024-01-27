@@ -6423,6 +6423,7 @@ GameObject:
   - component: {fileID: 3968040458031072649}
   - component: {fileID: 3018149649357507990}
   - component: {fileID: 4750254294326029561}
+  - component: {fileID: 5780566997532599257}
   m_Layer: 8
   m_Name: PlayerKardan
   m_TagString: Player
@@ -6470,6 +6471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25388d0a6e30fb84f8d32546a0923f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSitting: 0
 --- !u!114 &966186249666529815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6630,6 +6632,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.017330257, y: 0.0062412396, z: 0.0019877115}
   m_Center: {x: 0.0000045789616, y: 0.0058260444, z: -0.0013339573}
+--- !u!65 &5780566997532599257
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643783308257671335}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0.02, z: -0.05}
 --- !u!1 &2843165150673886204
 GameObject:
   m_ObjectHideFlags: 0
