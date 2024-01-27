@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -50,13 +51,46 @@ public class PlayerStateMachine : StateMachine
         
         MainCameraTransform = Camera.main.transform;
 
-        // 23.01. hinzu
-        SwitchState(new PlayerSittingState(this));
+        SetInitialState();
 
-        // 23.01. auskomm
-        //SwitchState(new PlayerFreeLookState(this));
+        /*if (PlayerPrefs.HasKey("CurrentLevel") || PlayerPrefs.HasKey("PlayerPositionX"))
+        {
+            string currentLevel = PlayerPrefs.GetString("CurrentLevel");
+            float x = PlayerPrefs.GetFloat("PlayerPositionX");
+
+            if (currentLevel == "Level_1_The_Discovery" & x > 0)
+            {
+
+                // 23.01. hinzu und das hier aktivieren
+                SwitchState(new PlayerSittingState(this));
+            }
+            else
+            {
+                // 23.01. auskomm
+                SwitchState(new PlayerFreeLookState(this));
+            }   
+        }
+        */
+        
+
+        // 23.01. hinzu falls fehler auftreten das hier deaktiviert lassen
+        //SwitchState(new PlayerSittingState(this));   
     }
-
+    // hinzu 27.01
+    private void SetInitialState()
+    {
+            // Überprüfen, ob eine gespeicherte Position existiert
+            if (PlayerPrefs.HasKey("PlayerPositionX"))
+            {
+                // Gespeicherte Position vorhanden, wechseln zu PlayerFreeLookState
+                SwitchState(new PlayerFreeLookState(this));
+            }
+            else
+            {
+                // Keine gespeicherte Position, wechseln zu PlayerSittingState
+                SwitchState(new PlayerSittingState(this));
+            }     
+    }
         private void OnEnable() 
     {
         Health.OnTakeDamage += HandleTakeDamage;
