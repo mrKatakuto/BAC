@@ -34,7 +34,9 @@ public class SoundManager : Singleton<SoundManager>
        FlySound,
        FlySoundNeu
         */
-        // Hier kommen die importieren Sound namen rein die Audios m�ssen in den Ressources ordner reinkopiert werden 
+        // Hier kommen die importieren Sound namen rein die Audios m�ssen in den Ressources ordner reinkopiert werden
+        Intro,
+        WinterAmbience
     }
 
     public void Init()
@@ -60,6 +62,8 @@ public class SoundManager : Singleton<SoundManager>
             soundList.Add(Resources.Load<AudioClip>("Audio/BubbleNeu"));
             soundList.Add(Resources.Load<AudioClip>("Audio/FlySound"));
             soundList.Add(Resources.Load<AudioClip>("Audio/FlySoundNeu")); */
+            soundList.Add(Resources.Load<AudioClip>("Audio/Intro"));
+            soundList.Add(Resources.Load<AudioClip>("Audio/WinterAmbience"));
 
 
         }

@@ -12,6 +12,10 @@ public class InGameMenuManager : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.Instance.Init(); // Soundmanager wird gestartet
+        SoundManager.Instance.PlaySound(SoundManager.Sound.WinterAmbience);
+
+
         inputReader = FindObjectOfType<InputReader>();
     }
 
@@ -50,12 +54,15 @@ public class InGameMenuManager : MonoBehaviour
 
     public void MainMenuButton() 
     {
-        GameManager1.Instance.SaveGame();
+        //GameManager1.Instance.SaveGame();
         Time.timeScale = 1f;
         // auskommentier 26.01
         //SceneManager.LoadScene("Main_Menu");
         // hinzu 26.01
-        loader.LoadLevel("Main_Menu");
+        //Aloader.LoadLevel("Main_Menu");
+        
+        loader.LoadLevel("Main_Menu", "TransitionCanvas");
+
     }
 
     public IEnumerator ConfirmationBox() 

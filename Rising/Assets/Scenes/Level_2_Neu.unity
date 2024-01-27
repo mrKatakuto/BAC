@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0018700957, g: 0.0025813645, b: 0.0056434255, a: 1}
+  m_IndirectSpecularColor: {r: 0.0018700232, g: 0.0025812925, b: 0.0056428323, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5637,12 +5637,12 @@ PrefabInstance:
     - target: {fileID: 169831869330555998, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.359719e-15
+      value: -0.0000001192093
       objectReference: {fileID: 0}
     - target: {fileID: 169831869330555998, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000011920929
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4167967877333416338, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
@@ -5717,7 +5717,7 @@ PrefabInstance:
     - target: {fileID: 8413608963840553899, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98395354
+      value: 0.9839536
       objectReference: {fileID: 0}
     - target: {fileID: 8413608963840553899, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
@@ -5727,12 +5727,12 @@ PrefabInstance:
     - target: {fileID: 8413608963840553899, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -8.311699e-16
+      value: 0.000000014662052
       objectReference: {fileID: 0}
     - target: {fileID: 8413608963840553899, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.1184767e-16
+      value: -0.000000002658737
       objectReference: {fileID: 0}
     - target: {fileID: 8501548643600484219, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
@@ -12062,9 +12062,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a220621e1bc12458955ae894591d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 730959471}
-  mainMenu: {fileID: 289618685}
-  loadingSlider: {fileID: 1275305341}
+  currentLevelCanvas: {fileID: 289618685}
+  loadingScreens:
+  - name: TransitionCanvas
+    loadingScreen: {fileID: 730959471}
+    loadingSlider: {fileID: 1275305341}
 --- !u!4 &1161603609
 Transform:
   m_ObjectHideFlags: 0

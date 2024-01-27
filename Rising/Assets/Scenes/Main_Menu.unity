@@ -3035,9 +3035,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a220621e1bc12458955ae894591d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 202118477}
-  mainMenu: {fileID: 1558690511}
-  loadingSlider: {fileID: 1792206887}
+  currentLevelCanvas: {fileID: 1558690511}
+  loadingScreens:
+  - name: TransitionCanvas
+    loadingScreen: {fileID: 202118477}
+    loadingSlider: {fileID: 1792206887}
 --- !u!1 &394119997
 GameObject:
   m_ObjectHideFlags: 0

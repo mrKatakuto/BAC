@@ -2,46 +2,77 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-//richtig
+
 public class Loader : MonoBehaviour
 {
-    [Header("Menu Screens")]
-    [SerializeField] private GameObject loadingScreen;
-    [SerializeField] private GameObject mainMenu;
-
-    [Header("Slider")]
-    [SerializeField] private Slider loadingSlider;
-
-    float delayGlobal = 5f;
-
-    public void LoadLevel(string levelToLoad) 
+    [System.Serializable]
+    public class LoadingScreenInfo
     {
-        loadingScreen.SetActive(true);
-        loadingSlider.value = 0f;
-        mainMenu.SetActive(false);
-        StartCoroutine(LoadLevelWithDelay(levelToLoad, delayGlobal)); // 5 Sekunden Verzögerung
+        public string name; 
+        public GameObject loadingScreen; 
+        public Slider loadingSlider; 
     }
 
-    IEnumerator LoadLevelWithDelay(string levelToLoad, float delay) 
+    public GameObject currentLevelCanvas; 
+    [Header("Loading Screens")]
+    public LoadingScreenInfo[] loadingScreens;
+
+    private float delayGlobal = 5f;
+
+    public void LoadLevel(string levelToLoad, string loadingScreenName) 
     {
-        //Debug.Log(levelToLoad + ", " + delay);
+        StartCoroutine(LoadLevelWithDelay(levelToLoad, loadingScreenName, delayGlobal));
+    }
 
-        float timeElapsed = 0f;
+    IEnumerator LoadLevelWithDelay(string levelToLoad, string loadingScreenName, float delay) 
+    {
+        LoadingScreenInfo selectedScreen = null;
 
-        while (timeElapsed < delay)
+        foreach (var screen in loadingScreens)
         {
-            
-            timeElapsed += Time.deltaTime;
-            float progress = timeElapsed / delay;
-
-            //Debug.Log($"progres: {progress} delta: {Time.deltaTime}");
-        
-            loadingSlider.value = progress;
-            yield return null;
+            if (screen.name == loadingScreenName)
+            {
+                selectedScreen = screen;
+                break;
+            }
         }
 
-        //Debug.Log("While schleife verlassen");
+        if (selectedScreen != null)
+        {
+            if (currentLevelCanvas != null)
+            {
+                currentLevelCanvas.SetActive(false);
+            }
 
-        SceneManager.LoadScene(levelToLoad);
+            selectedScreen.loadingScreen.SetActive(true);
+            selectedScreen.loadingSlider.value = 0f;
+
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelToLoad);
+            asyncLoad.allowSceneActivation = false; 
+
+            float totalDelayTime = delay;
+            float timeElapsed = 0f;
+
+            while (!asyncLoad.isDone)
+            {
+                timeElapsed += Time.deltaTime;
+                float progress = Mathf.Clamp01(timeElapsed / totalDelayTime); 
+
+                selectedScreen.loadingSlider.value = progress;
+
+                if (asyncLoad.progress >= 0.9f && timeElapsed >= delay)
+                {
+                    asyncLoad.allowSceneActivation = true; 
+                }
+
+                yield return null;
+            }
+
+            selectedScreen.loadingScreen.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("Ladebildschirm mit dem Namen " + loadingScreenName + " nicht gefunden.");
+        }
     }
 }

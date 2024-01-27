@@ -63,6 +63,9 @@ public class MenuController : MonoBehaviour
     private void Start() 
     {
         InitializeResolutionSettings();
+        SoundManager.Instance.Init(); // Soundmanager wird gestartet
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Intro);
+
     }
 
     private void InitializeResolutionSettings()
@@ -126,7 +129,9 @@ public class MenuController : MonoBehaviour
     {    Debug.Log("StartNewGame called");
     
         //asyncLoader.LoadLevelBtn(newGameLevel);
-        loader.LoadLevel(newGameLevel);
+        //loader.LoadLevel(newGameLevel);
+        loader.LoadLevel("Level_1_The_Discovery", "TransitionCanvas");
+
     }
 
     private bool IsGameSaved() 
