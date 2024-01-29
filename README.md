@@ -1,7 +1,10 @@
 # Projekt_Bac_Media_IT
 
 # Game Title
-RISING: Per aspera ad astra
+Rising
+
+# Authors
+Alen Galusic
 
 # Specification
 
