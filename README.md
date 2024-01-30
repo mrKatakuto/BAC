@@ -15,4 +15,4 @@ Game Art Style: Tonn-Shader from https://github.com/UnityTechnologies/open-proje
 Packages used in Project: Cinemachine, Input System, Post Processing, ProBuilder, TextMeshPro, Timeline, Universal RP, Visual Effect Graph, VS Code Editor, VS Editor
 
 # Game Installation
-A created build is already stored in the folder UnityBuild_Rising 
+A created build is already available on this Link: https://fhkarnten-my.sharepoint.com/:f:/g/personal/edugalale002_fh-kaernten_at/Eu8Gh1yv3R5Gs9eyarfapAcBs7jzLdz4AqOX59yT-fCxQA?e=b4RWCl
