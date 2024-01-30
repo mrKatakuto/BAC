@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1346111919}
-  m_IndirectSpecularColor: {r: 0.014668521, g: 0.02801045, b: 0.066443145, a: 1}
+  m_IndirectSpecularColor: {r: 0.014659533, g: 0.028026238, b: 0.06646213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12063,7 +12063,7 @@ GameObject:
   - component: {fileID: 652799242}
   m_Layer: 12
   m_Name: TextboxJump
-  m_TagString: Untagged
+  m_TagString: Trigger1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17464,27 +17464,27 @@ PrefabInstance:
     - target: {fileID: 1905154063065520444, guid: 30e5e64192447bb459d43217bf8f0a95,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.0023072972
+      value: 0.002846987
       objectReference: {fileID: 0}
     - target: {fileID: 1905154063065520444, guid: 30e5e64192447bb459d43217bf8f0a95,
         type: 3}
       propertyPath: m_Size.z
-      value: 0.0059386757
+      value: 0.006046685
       objectReference: {fileID: 0}
     - target: {fileID: 1905154063065520444, guid: 30e5e64192447bb459d43217bf8f0a95,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.020748869
+      value: -0.02074522
       objectReference: {fileID: 0}
     - target: {fileID: 1905154063065520444, guid: 30e5e64192447bb459d43217bf8f0a95,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.013933928
+      value: 0.013611917
       objectReference: {fileID: 0}
     - target: {fileID: 1905154063065520444, guid: 30e5e64192447bb459d43217bf8f0a95,
         type: 3}
       propertyPath: m_Center.z
-      value: -0.0077680643
+      value: -0.007875005
       objectReference: {fileID: 0}
     - target: {fileID: 2019022315502997636, guid: 30e5e64192447bb459d43217bf8f0a95,
         type: 3}
@@ -17984,8 +17984,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.048104696, y: 0.0018256821, z: 0.0015955409}
-  m_Center: {x: -0.013415824, y: 0.014284332, z: -0.010011407}
+  m_Size: {x: 0.0481047, y: 0.0018256821, z: 0.0022684995}
+  m_Center: {x: -0.013405235, y: 0.014257269, z: -0.010348095}
 --- !u!1 &1195406339
 GameObject:
   m_ObjectHideFlags: 0
@@ -18075,7 +18075,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195406339}
-  m_LocalRotation: {x: -0.006302667, y: 0.990894, z: -0.0500229, w: -0.12484832}
+  m_LocalRotation: {x: -0.0063026687, y: 0.990894, z: -0.0500229, w: -0.124848336}
   m_LocalPosition: {x: 160.01385, y: 1.9653498, z: 164.08437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38628,8 +38628,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.094070636, y: 0.0018099903, z: 0.0060532647}
-  m_Center: {x: -0.02502028, y: 0.01125798, z: -0.007838274}
+  m_Size: {x: 0.09407065, y: 0.0023001605, z: 0.006157903}
+  m_Center: {x: -0.025021255, y: 0.010999699, z: -0.007895925}
 --- !u!1 &1746158076 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1045529794191116, guid: b3cb1eedaa476a7418c92c6cd9638100,
@@ -44230,8 +44230,8 @@ GameObject:
   - component: {fileID: 1821154442}
   - component: {fileID: 1821154444}
   m_Layer: 12
-  m_Name: Fight
-  m_TagString: Untagged
+  m_Name: TextboxFight
+  m_TagString: Trigger2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54094,12 +54094,12 @@ PrefabInstance:
     - target: {fileID: 8510316845444900851, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6826438
+      value: 0.6826437
       objectReference: {fileID: 0}
     - target: {fileID: 8510316845444900851, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000038493425
+      value: -0.000038493887
       objectReference: {fileID: 0}
     - target: {fileID: 8510316845444900851, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
@@ -54109,7 +54109,7 @@ PrefabInstance:
     - target: {fileID: 8510316845444900851, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07363389
+      value: -0.07363388
       objectReference: {fileID: 0}
     - target: {fileID: 8510316846200357622, guid: f0824f58d69d025418f9a8de53f9a043,
         type: 3}
@@ -54275,6 +54275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 559581805, guid: 524317e64d5a0f642b0ae6061a299da7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 668751739, guid: 524317e64d5a0f642b0ae6061a299da7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3

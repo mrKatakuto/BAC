@@ -23,9 +23,18 @@ public class TextboxManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+private void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Player"))
     {
-        if (other.CompareTag("Player"))
+        if (gameObject.name == "TextboxJump")
+        {
+            textBox1.SetActive(false);
+            textBox2.SetActive(true);
+            textBox3.SetActive(false);
+            PauseGame();
+        }
+        else if (gameObject.name == "TextboxFight")
         {
             textBox1.SetActive(false);
             textBox2.SetActive(false);
@@ -33,6 +42,7 @@ public class TextboxManager : MonoBehaviour
             PauseGame();
         }
     }
+}
 
     private IEnumerator ShowTextbox1AfterDelay(float delay)
     {
