@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class InGameMenuManager : MonoBehaviour
 {
     public bool IsPaused { get; private set; }
@@ -13,9 +14,15 @@ public class InGameMenuManager : MonoBehaviour
     private void Start()
     {
         SoundManager.Instance.Init(); // Soundmanager wird gestartet
-        SoundManager.Instance.PlaySound(SoundManager.Sound.WinterAmbience);
+        if (SceneManager.GetActiveScene().name == "Level_1_The_Discovery")
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.WinterAmbience);
 
-
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.Lab);
+        }
         inputReader = FindObjectOfType<InputReader>();
     }
 

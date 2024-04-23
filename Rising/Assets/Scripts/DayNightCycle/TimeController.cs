@@ -34,7 +34,7 @@ public class TimeController : MonoBehaviour
 
     [SerializeField] private Material nightSkybox;
 
-    private DateTime currentTime;
+    public DateTime currentTime;
 
     private TimeSpan sunriseTime;
 

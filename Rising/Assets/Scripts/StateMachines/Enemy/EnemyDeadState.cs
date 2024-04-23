@@ -13,6 +13,10 @@ public class EnemyDeadState : EnemyBaseState
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);
         GameObject.Destroy(stateMachine.Target);
+
+        stateMachine.StartCoroutine(DestroyAfterDelay(3f));
+
+        
     }
 
     public override void Tick(float deltaTime)
@@ -23,5 +27,11 @@ public class EnemyDeadState : EnemyBaseState
       public override void Exit()
     {
 
+    }
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);  // Wartet für die angegebene Zeit
+        GameObject.Destroy(stateMachine.Enemy);  // Zerstört das Ziel-GameObject
     }
 }
