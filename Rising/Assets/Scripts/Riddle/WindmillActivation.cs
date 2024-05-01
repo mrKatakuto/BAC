@@ -11,7 +11,7 @@ public class WindmillActivation : MonoBehaviour
     public bool isActivated = false;
     private bool isPlayerInTrigger = false;  
     private bool canActivate = false;        
-    private float volumeMax = 0.5f;          
+    private float volumeMax = 0.1f;          
 
     void Start() 
     {

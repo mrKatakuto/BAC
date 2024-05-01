@@ -79,17 +79,18 @@ public class PlayerStateMachine : StateMachine
     // hinzu 27.01
     private void SetInitialState()
     {
-            // Überprüfen, ob eine gespeicherte Position existiert
-            if (PlayerPrefs.HasKey("PlayerPositionX"))
-            {
-                // Gespeicherte Position vorhanden, wechseln zu PlayerFreeLookState
-                SwitchState(new PlayerFreeLookState(this));
-            }
-            else
-            {
-                // Keine gespeicherte Position, wechseln zu PlayerSittingState
-                SwitchState(new PlayerSittingState(this));
-            }     
+        if (SceneManager.GetActiveScene().name == "Level_2_Neu")
+        {
+            SwitchState(new PlayerFreeLookState(this));
+        }
+        else if (PlayerPrefs.HasKey("PlayerPositionX"))
+        {
+            SwitchState(new PlayerFreeLookState(this));
+        }
+        else
+        {
+            SwitchState(new PlayerSittingState(this));
+        }
     }
         private void OnEnable() 
     {

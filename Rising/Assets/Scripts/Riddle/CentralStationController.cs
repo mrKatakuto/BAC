@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class CentralStationController : MonoBehaviour
 {
     private bool solarActivated = false;
@@ -16,7 +16,7 @@ public class CentralStationController : MonoBehaviour
         WindmillActivated,
         SolarActivated
     }
-
+    
     public void ActivateStation(string station)
     {
         bool justActivated = false;
@@ -73,8 +73,10 @@ public class CentralStationController : MonoBehaviour
     {
         if (solarActivated && windmillActivated && reactorActivated)
         {
-            Debug.Log("Alle Stationen wurden aktiviert. Finalevent wird gestartet.");
+            //Debug.Log("Alle Stationen wurden aktiviert. Finalevent wird gestartet.");
             //  Final-Event
+            LoadVideoScene();
+
         }
     }
 
@@ -103,7 +105,12 @@ public class CentralStationController : MonoBehaviour
     {
         messageText.text = message;
         messageText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3); // Nachricht für 3 Sekunden anzeigen
+        yield return new WaitForSeconds(3); 
         messageText.gameObject.SetActive(false);
+    }
+
+    private void LoadVideoScene()
+    {
+        SceneManager.LoadScene("FinalVideo");  // Ersetze "VideoScene" mit dem tatsächlichen Namen der Szene, die das Video enthält
     }
 }
