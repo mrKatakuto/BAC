@@ -68,7 +68,7 @@ public class SolarPanelActivation : MonoBehaviour
     {
         centralStationController.ActivateStation("Solar");
         isActivated = true;  
-        SoundManager.Instance.PlaySound(SoundManager.Sound.Activate);
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Activate, 0.3f);
 
 
     }

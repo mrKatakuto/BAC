@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Singleton: Nur einmal verwenden
+// Singleton: Nur einmal verwenden
 public class SoundManager : Singleton<SoundManager>
 {
     GameObject soundGameObject = null;
@@ -13,34 +13,19 @@ public class SoundManager : Singleton<SoundManager>
         return audioSource;
     }
 
-    //new Soundlist
+    // Liste von Soundclips
     private List<AudioClip> soundList = new List<AudioClip>();
 
     public enum Sound
     {
-        /*
-       Back,
-       Coat,
-       Confirm,
-       Fall,
-       Jump,
-       Quik, 
-       Select,
-       BackgroundMusic,
-       Bubble,
-       BackgroundMusicNeu,
-       EndSceneSoundNeu,
-       BubbleNeu,
-       FlySound,
-       FlySoundNeu
-        */
-        // Hier kommen die importieren Sound namen rein die Audios m�ssen in den Ressources ordner reinkopiert werden
         Intro,
         WinterAmbience,
         Wind,
         Activate,
         Lab,
-        Robot
+        Robot,
+        Sword,
+        Dead
     }
 
     public void Init()
@@ -49,47 +34,25 @@ public class SoundManager : Singleton<SoundManager>
         {
             soundGameObject = new GameObject("Sound");
             audioSource = soundGameObject.AddComponent<AudioSource>();
-           
 
-            //add Sounds to List
-            /* soundList.Add(Resources.Load<AudioClip>("Audio/Back"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/Coat_02"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/Confirm"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/Fall_01"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/Jump_01"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/Quik_01"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/Select_01"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/BackgroundMusic"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/Bubble"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/BackgroundMusicNeu"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/EndSceneSoundNeu"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/BubbleNeu"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/FlySound"));
-            soundList.Add(Resources.Load<AudioClip>("Audio/FlySoundNeu")); */
+            // Sounds laden und zur Liste hinzufügen
             soundList.Add(Resources.Load<AudioClip>("Audio/Intro"));
             soundList.Add(Resources.Load<AudioClip>("Audio/WinterAmbience"));
             soundList.Add(Resources.Load<AudioClip>("Audio/Wind"));
             soundList.Add(Resources.Load<AudioClip>("Audio/Activate"));
             soundList.Add(Resources.Load<AudioClip>("Audio/Lab"));
             soundList.Add(Resources.Load<AudioClip>("Audio/Robot"));
-
-
+            soundList.Add(Resources.Load<AudioClip>("Audio/Sword"));
+            soundList.Add(Resources.Load<AudioClip>("Audio/Dead"));
         }
     }
 
-    public void PlaySound(Sound sound, bool check = false)
+    // PlaySound-Methode mit Lautstärkeregelung
+    public void PlaySound(Sound sound, float volume = 1.0f, bool check = false)
     {
-        if (check)
-        {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(soundList[(int)sound]);
-            }
-        }
-        else
-        {
-            audioSource.PlayOneShot(soundList[(int)sound]);
-        }
-    }
+        if (check && audioSource.isPlaying)
+            return;
 
+        audioSource.PlayOneShot(soundList[(int)sound], volume);
+    }
 }

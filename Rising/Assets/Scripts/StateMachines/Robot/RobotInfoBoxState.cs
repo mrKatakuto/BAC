@@ -71,6 +71,8 @@ public class RobotInfoBoxState : RobotBaseState
         Time.timeScale = 1f; // immer darauf achten das timescale auf 1 gesetzt wird
     }
 
+    
+
     public override void Exit()
     {
         if (infoPanel.activeInHierarchy)

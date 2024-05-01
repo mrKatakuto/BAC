@@ -56,7 +56,7 @@ public class WindmillActivation : MonoBehaviour
         }
         isActivated = true;  
         centralStationController.ActivateStation("Windmill");  
-        SoundManager.Instance.PlaySound(SoundManager.Sound.Activate);  
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Activate, 0.3f);
 
         interactionCanvas.SetActive(false);  
         ResumeGame();  

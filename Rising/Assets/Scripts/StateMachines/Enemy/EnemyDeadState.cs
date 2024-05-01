@@ -8,6 +8,11 @@ public class EnemyDeadState : EnemyBaseState
     {
     }
 
+    void Start() 
+    {
+        //SoundManager.Instance.Init();
+    }
+
     public override void Enter()
     {
         stateMachine.Ragdoll.ToggleRagdoll(true);
@@ -31,6 +36,7 @@ public class EnemyDeadState : EnemyBaseState
 
     private IEnumerator DestroyAfterDelay(float delay)
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Dead);
         yield return new WaitForSeconds(delay);  // Wartet für die angegebene Zeit
         GameObject.Destroy(stateMachine.Enemy);  // Zerstört das Ziel-GameObject
     }

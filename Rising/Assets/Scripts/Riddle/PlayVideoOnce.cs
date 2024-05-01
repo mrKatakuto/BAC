@@ -7,6 +7,7 @@ public class PlayVideoOnce : MonoBehaviour
     public VideoPlayer videoPlayer;      
     public RawImage videoDisplay;        
     public RenderTexture videoTexture;
+    public GameObject gameCanvas; 
     private AudioSource[] allAudioSources; 
     private bool hasPlayed = false;      
 
@@ -29,7 +30,8 @@ public class PlayVideoOnce : MonoBehaviour
         if (!hasPlayed && other.CompareTag("Player"))  
         {
             videoDisplay.texture = videoTexture;       
-            videoDisplay.enabled = true;              
+            videoDisplay.enabled = true; 
+            gameCanvas.SetActive(false); 
             videoPlayer.Play();                        
             hasPlayed = true;  
             PauseAllAudioExceptVideo();
@@ -42,13 +44,14 @@ public class PlayVideoOnce : MonoBehaviour
         videoDisplay.enabled = false;                 
         vp.gameObject.SetActive(false);               
         ResumeAllAudio();
+        gameCanvas.SetActive(true); 
     }
 
     private void PauseAllAudioExceptVideo()
     {
         foreach (AudioSource audio in allAudioSources)
         {
-            if (audio != videoPlayer.GetTargetAudioSource(0)) // Überprüfen, ob es sich nicht um die AudioSource des VideoPlayers handelt
+            if (audio != videoPlayer.GetTargetAudioSource(0)) 
             {
                 audio.Pause();
             }

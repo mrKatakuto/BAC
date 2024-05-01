@@ -72,7 +72,7 @@ public class ReactorActivation : MonoBehaviour
 
     private void ActivateReactor()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Sound.Activate);
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Activate, 0.3f);
         centralStationController.ActivateStation("Reactor");
         isActivated = true;  
         interactionCanvas.SetActive(false);
