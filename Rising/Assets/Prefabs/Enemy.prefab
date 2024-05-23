@@ -5194,6 +5194,7 @@ MonoBehaviour:
   <AttackRange>k__BackingField: 1.5
   <AttackDamage>k__BackingField: 15
   <AttackKnockback>k__BackingField: 5
+  <Enemy>k__BackingField: {fileID: 2982094144478137026}
 --- !u!114 &8619207215516034121
 MonoBehaviour:
   m_ObjectHideFlags: 0

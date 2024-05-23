@@ -11,7 +11,7 @@ public class IntroManager : MonoBehaviour
     {
         PlayIntroVideo();
         
-        /*if (PlayerPrefs.GetInt("hasPlayedVideo", 0) == 0)
+        if (PlayerPrefs.GetInt("hasPlayedVideo", 0) == 0)
         {
             PlayerPrefs.SetInt("hasPlayedVideo", 1);
             PlayIntroVideo();
@@ -21,7 +21,7 @@ public class IntroManager : MonoBehaviour
 
             LoadMainScene();
         }
-        */
+        
         
     }
 

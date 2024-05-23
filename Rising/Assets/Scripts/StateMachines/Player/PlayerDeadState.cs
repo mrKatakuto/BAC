@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDeadState : PlayerBaseState
 {
+    private RestartGame restartGame;
+
     public PlayerDeadState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
+        restartGame = GameObject.FindObjectOfType<RestartGame>();
     }
 
     public override void Enter()
@@ -13,6 +14,8 @@ public class PlayerDeadState : PlayerBaseState
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);
 
+        if (restartGame != null)
+            restartGame.ShowDeathPanel();
     }
 
     public override void Tick(float deltaTime)
@@ -20,8 +23,9 @@ public class PlayerDeadState : PlayerBaseState
 
     }
 
-      public override void Exit()
+    public override void Exit()
     {
-
+        if (restartGame != null)
+            restartGame.HideDeathPanel();
     }
 }

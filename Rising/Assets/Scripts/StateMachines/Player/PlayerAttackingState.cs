@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlayerAttackingState : PlayerBaseState
 {
-    private float previousFrameTime;
+    private float previousFrameTime = -1f; 
 
     private bool alreadyApplyForce;
-    private  Attack attack;
+    private Attack attack;
 
     public PlayerAttackingState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine)
     {
@@ -21,20 +21,24 @@ public class PlayerAttackingState : PlayerBaseState
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }
 
-        public override void Tick(float deltaTime)
+    public override void Tick(float deltaTime)
     {
         Move(deltaTime);
-
         FaceTarget();
 
         float normalizedTime = GetNormalizedTime(stateMachine.Animator, "Attack");
 
-        // normalizedTime >= previousFrameTime && 
         if (normalizedTime < 1f)
         {
-            if (normalizedTime >= attack.ForceTime)
+            if (normalizedTime >= attack.ForceTime && !alreadyApplyForce)
             {
                 TryApplyForce();
+            }
+
+            // Sound abspielen, wenn die Animation den Punkt 0.5 erreicht
+            if (normalizedTime >= 0.5f && previousFrameTime < 0.5f)
+            {
+                SoundManager.Instance.PlaySound(SoundManager.Sound.Sword, 0.15f);
             }
 
             if (stateMachine.InputReader.IsAttacking)
@@ -64,16 +68,12 @@ public class PlayerAttackingState : PlayerBaseState
 
     private void TryComboAttack(float normalizedTime)
     {
-         if(attack.ComboStateIndex == -1) 
-         {
+        if (attack.ComboStateIndex == -1 || normalizedTime < attack.ComboAttackTime)
+        {
             return;
-         }
-         if (normalizedTime < attack.ComboAttackTime)
-         {
-            return;
-         }
+        }
 
-         stateMachine.SwitchState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
+        stateMachine.SwitchState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
     }
 
     private void TryApplyForce()
@@ -82,8 +82,8 @@ public class PlayerAttackingState : PlayerBaseState
         {
             return;
         }
-        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
 
+        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
         alreadyApplyForce = true;
     }
 }
